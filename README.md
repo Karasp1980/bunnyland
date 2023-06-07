@@ -311,6 +311,7 @@ In the Deploy tab:
 * [https://www.dreamstime.com](https://www.dreamstime.com)
 * [https://pixabay.com/](https://pixabay.com/)
 * [https://www.istockphoto.com/se](https://www.istockphoto.com/se)
+* [https://www.flaticon.com](https://www.flaticon.com)
 
 
 ### [](https://github.com/vivignutz/balcongardens-fe#acknowledgements)Acknowledgements
