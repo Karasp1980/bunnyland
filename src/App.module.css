@@ -1,6 +1,8 @@
 .App {
   font-family: "DM Sans", sans-serif;
-  background-color: #f8f8f8;
+  background-image: url('../src/assets/background-image.jpg');
+  background-size: cover;
+  background-repeat: repeat;
   min-height: 100vh;
 }
 
