@@ -26,10 +26,12 @@ function PostCreateForm() {
 
   const [postData, setPostData] = useState({
     title: "",
+    category: "",
+    location: "",
     content: "",
     image: "",
   });
-  const { title, content, image } = postData;
+  const { title, category, location, content, image } = postData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -56,7 +58,9 @@ function PostCreateForm() {
     const formData = new FormData();
 
     formData.append("title", title);
-    formData.append("content", content);
+    formData.append("category", category);
+    formData.append("location", location);
+    formData.append("contentent", content);
     formData.append("image", imageInput.current.files[0]);
 
     try {
@@ -78,6 +82,42 @@ function PostCreateForm() {
           type="text"
           name="title"
           value={title}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.title?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
+      <Form.Group>
+        <Form.Label>Category</Form.Label>
+        <select
+          as="select"
+          type="text"
+          name="category" 
+          value={category} 
+          onChange={handleChange}
+        >
+          <option value="new_home_needed">New home needed</option>
+          <option value="tip">Tip</option>
+          <option value="help_needed">Help needed</option>
+          <option value="other">Other</option>
+        </select>
+      </Form.Group>
+      {errors?.category?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+            
+      <Form.Group>
+        <Form.Label>Location</Form.Label>
+        <Form.Control
+          type="text"
+          name="location"
+          value={location}
           onChange={handleChange}
         />
       </Form.Group>

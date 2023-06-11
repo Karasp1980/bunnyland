@@ -22,6 +22,8 @@ const Post = (props) => {
     updated_at,
     postPage,
     setPosts,
+    category,
+    location,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -127,6 +129,17 @@ const Post = (props) => {
             <i className="far fa-comments" />
           </Link>
           {comments_count}
+        </div>
+
+        <div className="d-flex justify-content-between">
+          <div>
+            <span>Category: </span>
+            <span>{category}</span>
+          </div>
+          <div>
+            <span>Location: </span>
+            <span>{location}</span>
+          </div>
         </div>
       </Card.Body>
     </Card>
