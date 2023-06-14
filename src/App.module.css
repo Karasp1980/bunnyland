@@ -1,5 +1,5 @@
 .App {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Lobster", sans-serif;
   background-color: #f8f8f8;
   min-height: 100vh;
 }
@@ -9,6 +9,7 @@
 }
 
 .Content {
+  font-family: 'Josefin Sans', sans-serif;
   background-color: #ffffff;
   padding: 10px;
   border-radius: 2px;
