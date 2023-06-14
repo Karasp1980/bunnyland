@@ -9,5 +9,13 @@
   }
   
   .Active i {
-    color: #2142b2;
+    color: #21b248;
   }  
+
+  .Slogan {
+    display: inline;
+    font-size: 1.5rem;
+    font-style: normal, bold;
+    color: #515a50;
+    padding: 0 10px 0 10px;
+  }

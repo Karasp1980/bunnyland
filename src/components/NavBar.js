@@ -94,6 +94,9 @@ const NavBar = () => {
             <img src={logo} alt="logo" height="45" />
           </Navbar.Brand>
         </NavLink>
+        <div className={styles.Slogan}>
+              <span>Bunnyland</span>
+        </div>
         {currentUser && addPostIcon}
         <Navbar.Toggle
           ref={ref}
