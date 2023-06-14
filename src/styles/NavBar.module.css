@@ -9,7 +9,7 @@
   }
   
   .Active i {
-    color: #21b248;
+    color: #A43F2D;
   }  
 
   .Slogan {
@@ -17,5 +17,5 @@
     font-size: 1.5rem;
     font-style: normal, bold;
     color: #515a50;
-    padding: 0 10px 0 10px;
+    padding: 0 15px 0 15px;
   }
