@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useRef, useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -10,7 +9,7 @@ import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-import PopularProfiles from "./PopularProfiles";
+
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -24,10 +23,13 @@ import Post from "../posts/Post";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
+import MessageCreateForm from "../messages/MessageCreateForm";
+import Message from "../messages/Message";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [profilePosts, setProfilePosts] = useState({ results: [] });
+  const elementRef = useRef(null)
 
   const currentUser = useCurrentUser();
   const { id } = useParams();
@@ -37,32 +39,37 @@ function ProfilePage() {
 
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
-
+  const [profileMessages, setProfileMessages] = useState({results: []});
+  const [isMounted, setIsMounted] = useState(false);
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [{ data: pageProfile }, { data: profilePosts }] =
+        const [{ data: pageProfile }, { data: profilePosts },{ data: profileMessages },] =
           await Promise.all([
             axiosReq.get(`/profiles/${id}/`),
             axiosReq.get(`/posts/?owner__profile=${id}`),
+            axiosReq.get(`/messaging/?profile=${id}`),
           ]);
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [pageProfile] },
         }));
         setProfilePosts(profilePosts);
+        setProfileMessages(profileMessages);
         setHasLoaded(true);
+        setIsMounted(true);
       } catch (err) {
         console.log(err);
       }
     };
     fetchData();
-  }, [id, setProfileData]);
+  }, [id, setProfileData, isMounted]);
 
   const mainProfile = (
     <>
       {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
-      <Row noGutters className="px-3 text-center">
+      <Row noGutters className="px-3 text-center" ref={elementRef}>
         <Col lg={3} className="text-lg-left">
           <Image
             className={styles.ProfileImage}
@@ -135,10 +142,45 @@ function ProfilePage() {
     </>
   );
 
+  const mainProfileMessages = (
+    <>
+      <Container className={`${appStyles.Content} ${styles.Messages}`}>
+        <h3 className="text-center">Messages</h3>
+        {profileMessages.results.length ? (
+          <InfiniteScroll
+          children={
+            profileMessages.results.map((message) => (
+              <Message key={message.id}{...message} />
+            ))}
+          dataLength={profileMessages.results.length}
+          loader={<Asset spinner />}
+          hasMore={!!profileMessages.next}
+          next={() => fetchMoreData(profileMessages, setProfileMessages)}
+          />
+        ) : (
+          <Asset message={`no messages yet...`} />
+        )}
+      </Container>
+    </>
+  );
+
   return (
     <Row>
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <PopularProfiles mobile />
+      
+        {currentUser && !is_owner && (
+          <MessageCreateForm mobile sendToProfile={profile?.owner} />
+        )}
+        {currentUser &&
+          is_owner &&
+          (hasLoaded ? (
+            <Container className="d-lg-none mb-3">
+              {mainProfileMessages}
+            </Container>
+          ) : (
+            <Asset spinner />
+          ))}
+
         <Container className={appStyles.Content}>
           {hasLoaded ? (
             <>
@@ -151,10 +193,27 @@ function ProfilePage() {
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        <PopularProfiles />
+          {currentUser && !is_owner && (
+            <MessageCreateForm
+              sendToProfile={profile?.owner}
+              profileId={profile?.id}
+            />
+          )}
+
+        {currentUser &&
+            is_owner &&
+            (hasLoaded ? (
+              <Container className="d-none d-lg-block">
+                {mainProfileMessages}
+              </Container>
+            ) : (
+              <Asset spinner />
+            ))}
       </Col>
+      
     </Row>
   );
-}
+}     
 
 export default ProfilePage;
+

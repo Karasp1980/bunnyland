@@ -8,12 +8,12 @@ This part of the project is the frontend part based on the React framework, it c
 
 [View the live project here.](https://bunnyland.herokuapp.com/)
 
-### [](https://github.com/vivignutz/balcongardens-drf-api#links-to-the-backend-api-project)Links to the Backend API Project
+### Links to the Backend API Project
 
 - [Backend - Repository](https://github.com/Karasp1980/drf-backend)
 - [Backend - Deployment](https://bunnyland-drf.herokuapp.com/)
 
-## [](https://github.com/vivignutz/balcongardens-fe#toc)Table of Contents
+## Table of Contents
 
 - [User Experience (UX)](https://github.com/vivignutz/balcongardens-fe#user-experience-ux)
   - [User Stories](https://github.com/vivignutz/balcongardens-fe#user-stories)
@@ -38,7 +38,7 @@ This part of the project is the frontend part based on the React framework, it c
   - [Media](https://github.com/vivignutz/balcongardens-fe#media)
   - [Acknowledgments](https://github.com/vivignutz/balcongardens-fe#acknowledgments)
 
-## [](https://github.com/vivignutz/balcongardens-fe#user-experience-ux)User Experience (UX)
+## User Experience (UX)
 
 The project was created in order to offer a plant exchange bank for users from Berlin and the region. So could people who loves plants exchange their own double plants with others and built a nice community of plant lovers.
 Some criterias in achieving this goal were identified as below:
@@ -50,20 +50,20 @@ Some criterias in achieving this goal were identified as below:
 - Registered users should be able to follow offerers to stay in touch with this person who is offering some plants to exchange.
 - Offerers can update their information in a profile page to better presenting themselves to the others who wants to get the plants.
 
-### [](https://github.com/vivignutz/balcongardens-fe#user-stories)User stories
+### User stories
 
 [ ![Preview Kanban](https://github.com/vivignutz/balcongardens-fe/blob/main/src/assets/static/kanban.png)](https://github.com/vivignutz/balcongardens-fe/blob/main/src/assets/static/kanban.png)
 
 - User stories can be viewed in the GitHub repository and each user story has been grouped into Epics which can be displayed on the project's [Kanban board](https://github.com/users/vivignutz/projects/15).
 
-### [](https://github.com/vivignutz/balcongardens-fe#agile-methodology)Agile methodology
+### Agile methodology
 
 - The Agile Methodology was employed throughout this project, where GitHub projects were used to create User Stories, including a list of priorities grouped into Tags. Thus, the process can be carried out with a view to the priorities of the (supposed) client.
 - A lst of all issues and its labels can be found [here](https://github.com/vivignutz/balcongardens-fe/issues).
 
-### [](https://github.com/vivignutz/balcongardens-fe#design)Design
+### Design
 
-- #### [](https://github.com/vivignutz/balcongardens-fe#color-scheme)Color Scheme
+- #### Color Scheme
 
   I decided to incorporate a minimalistic design approach for the site. This is in order to make the content and detailed information throughout the site to stand out better to the users.
 
@@ -71,11 +71,11 @@ Some criterias in achieving this goal were identified as below:
 
   [ ![Pallete Color](https://github.com/vivignutz/balcongardens-fe/blob/main/src/assets/static/color_pallet.jpg)](https://github.com/vivignutz/balcongardens-fe/blob/main/src/assets/color_pallet.jpg)
 
-- #### [](https://github.com/vivignutz/balcongardens-fe#typography)Typography
+- #### Typography
 
   Google Fonts was used for the font in the project. The name of the font is Poppins with a medium font weight for a stylistic impression.
 
-- ### [](https://github.com/vivignutz/balcongardens-fe#wireframes)Wireframes
+- ### Wireframes
 
 - ##### Main Page:
 
@@ -143,15 +143,15 @@ Some criterias in achieving this goal were identified as below:
 
 [![Edit Profile](https://github.com/vivignutz/balcongardens-fe/blob/main/src/assets/static/edit_prof.png)](https://github.com/vivignutz/balcongardens-fe/blob/main/src/assets/edit_prof.png)
 
-## [](https://github.com/vivignutz/balcongardens-fe#feed-page)Feed page
+## Feed page
 
 - On the Feed page all plants offered will be listed in an infinite loading process, according to the followed profiles. So the users can have the experience to scroll the screem for more and more plants.
 
-## [](https://github.com/vivignutz/balcongardens-fe#saved-page)Liked page
+## Liked page
 
 - Registered users have the possibility to see their liked plants when click on "Liked" at the menu bar. All plantas that a user liked will appear on a list form.
 
-### [](https://github.com/vivignutz/balcongardens-fe#future-features)Future Features
+### Future Features
 
 Some future features were idealized to be implemented:
 
@@ -161,15 +161,15 @@ Some future features were idealized to be implemented:
 - Implement a location algorithm to allow users to search for plants or offeres through a certain distance, connected with the "City" field.
 - To offer the functionality for an image gallery to allow the offeres to upload more pictures of the plants to give.
 
-## [](https://github.com/vivignutz/balcongardens-fe#technologies-used)Technologies Used
+## Technologies Used
 
-### [](https://github.com/vivignutz/balcongardens-fe#languages)Languages
+### Languages
 
 - JavaScript
 - HTML5
 - CSS3
 
-### [](https://github.com/vivignutz/balcongardens-fe#frameworks-libraries--programs-used)Frameworks, Libraries & Programs Used
+### Frameworks, Libraries & Programs Used
 
 - [React](https://reactjs.org/) - (Front-end JavaScript library for building user interfaces based on UI components)
 - [React Bootstrap](https://react-bootstrap.github.io/) - Component-based library that provides native Bootstrap components as pure React components[1](https://www.pluralsight.com/guides/how-to-set-up-a-react-bootstrap-app). Used to create a responsive application/component UI.
@@ -184,22 +184,22 @@ Some future features were idealized to be implemented:
   - [ESLint](https://eslint.org/) - Code Linter.
   - [Prettier](https://prettier.io/) - Code Formatting.
 
-## [](https://github.com/vivignutz/balcongardens-fe#testing)Testing
+## Testing
 
-### [](https://github.com/vivignutz/balcongardens-fe#navigation)Navigation-test
+### Navigation-test
 
 1. Access the navigation bar on every page and easily navigate to the different sections of the website. - PASS
 2. Continue scrolling without pagination to find more plants. - PASS
 3. Search for keywords or user's name in the search bar to find the plant or a user. - PASS
 
-### [](https://github.com/vivignutz/balcongardens-fe#account)Account-test
+### Account-test
 
 1. See the most followed users. - PASS
 2. Click on profiles to find more information about them. - PASS
    (\*\*\* in development)
 3. Edit my profile to update or change my information. - PASS
 
-### [](https://github.com/vivignutz/balcongardens-fe#posts)Posts
+### Posts
 
 1. Delete posts a logged in user - PASS
 2. Edit posts to update information. - PASS
@@ -207,23 +207,23 @@ Some future features were idealized to be implemented:
 4. Find a list of posts at the home page. - PASS
 5. Click on a post and view all details. - PASS
 
-### [](https://github.com/vivignutz/balcongardens-fe#authentication)Authentication
+### Authentication
 
 1. Register account. - PASS
 2. Login and logout. - PASS
 3. Set the acess tokens to refresh and avoid logout of users. - PASS
 
-## [](https://github.com/vivignutz/balcongardens-fe#code-validation)Code Validation
+## Code Validation
 
-### [](https://github.com/vivignutz/balcongardens-fe#jsx)JSX
+### JSX
 
 The JSX code was validated during the development process and corrected as the project proceeded.
 
-### [](https://github.com/vivignutz/balcongardens-fe#css)CSS
+### CSS
 
 Checked the CSS syntax at the W3C CSS Validator Service and the results came with no errors.
 
-### [](https://github.com/vivignutz/balcongardens-fe#lighthouse-scores)Lighthouse Scores
+### Lighthouse Scores
 
 The Lighthouse Scores of Google Dev Tools was used for perfoemance tests. The performance metrics however were impacted by the large image sizes, ahtough all of them were resized before uploaded. For future updates I will investigate possibilities to have cloudinary to resize the images on upload automatically to speed up the site.
 
@@ -239,27 +239,25 @@ The Lighthouse Scores of Google Dev Tools was used for perfoemance tests. The pe
 
 The website was thoroughly tested using the [responsivetesttool.](https://responsivetesttool.com/)
 
-### [](https://github.com/vivignutz/balcongardens-fe#bugs)Bugs
+### Bugs
 
-#### [](https://github.com/vivignutz/balcongardens-fe#fixed-bugs)Fixed Bugs
+#### Fixed Bugs
 
-- Django Rest Auth Token, in which all sessions were closed suddenly.
-- Small bugs like typo and misspelling through the code were solved.
+- 
 
-#### [](https://github.com/vivignutz/balcongardens-fe#remaining-bugs)Remaining Bugs
+#### Remaining Bugs
 
-- MoreDropdown for post edit is showing in the "wrong" place, and should be in the right side of the container.
-- City field is not being showing even when user choses a city.
+- 
 
-## [](https://github.com/vivignutz/balcongardens-fe#deployment)Deployment
+## Deployment
 
-### [](https://github.com/vivignutz/balcongardens-fe#forking-the-github-repository)Forking the GitHub Repository
+### Forking the GitHub Repository
 
 1.  Go to [the project repository](https://github.com/ErikHgm/FireHouse-Restaurant-Project)
 2.  In the right most top menu, click the "Fork" button.
 3.  There will now be a copy of the repository in your own GitHub account.
 
-### [](https://github.com/vivignutz/balcongardens-fe#running-the-project-locally)Running the project locally
+### Running the project locally
 
 1.  Go to [the project repository](https://github.com/ErikHgm/FireHouse-Restaurant-Project)
 2.  Click on the "Code" button.
@@ -273,7 +271,7 @@ The website was thoroughly tested using the [responsivetesttool.](https://respon
 1.  Go to [the project repository](https://github.com/ErikHgm/FireHouse-Restaurant-Project)
 2.  Click the green button that says "Gitpod" and the project will now open up in Gitpod.
 
-### [](https://github.com/vivignutz/balcongardens-fe#deploying-with-heroku)Deploying with Heroku
+### Deploying with Heroku
 
 I followed the below steps using the Code Institute tutorial:
 
@@ -284,7 +282,7 @@ The following command in the Gitpod CLI will create the relevant files needed fo
 3.  Enter a name for your new project, all Heroku apps need to have a unique name, you will be prompted if you need to change it.
 4.  Select the region you are working in.
 
-#### [](https://github.com/vivignutz/balcongardens-fe#heroku-deployment)Heroku Deployment
+#### Heroku Deployment
 
 In the Deploy tab:
 
@@ -295,25 +293,30 @@ In the Deploy tab:
 2.  You can then choose to deploy the project manually or automatically, automatic deployment will generate a new application every time you push a change to Github, whereas manual deployment requires you to push the `Deploy Branch` button whenever you want a change made.
 3.  Once you have chosen your deployment method and have clicked `Deploy Branch` your application will be built and you should now see the `View` button, click this to open your application.
 
-## [](https://github.com/vivignutz/balcongardens-fe#credits)Credits
+## Credits
 
-### [](https://github.com/vivignutz/balcongardens-fe#online-documentation)Online Documentation
+### Online Documentation
 
 - [React documentation](https://reactjs.org/docs/getting-started.html)
 - [React Bootstrap documentation and examples](https://react-bootstrap.github.io/)
 
-### [](https://github.com/vivignutz/balcongardens-fe#code)Code
+### Code
 
 - The Moments tutorial by Code institute was used to create the foundations on which I built upon to create the project.
 
 ### Images
-
+* Thanks to Tor Jäger Illustration for help with the logo.
 * [https://www.dreamstime.com](https://www.dreamstime.com)
 * [https://pixabay.com/](https://pixabay.com/)
 * [https://www.istockphoto.com/se](https://www.istockphoto.com/se)
 * [https://www.flaticon.com](https://www.flaticon.com)
 
 
-### [](https://github.com/vivignutz/balcongardens-fe#acknowledgements)Acknowledgements
+### Acknowledgements
+* [Happening](https://github.com/quiltingcode/happening-react-frontend)
+* [Happening - API](https://github.com/quiltingcode/events-backend-api)
+* [Gear addict](https://github.com/Matthew-Hurrell/gear-addict)
+* [Gear addict - API](https://github.com/Matthew-Hurrell/gear-addict-api)
+
 
 
