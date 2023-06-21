@@ -24,18 +24,18 @@ const MessageCreateForm = (props) => {
     const [alertMessage, setAlertMessage] = useState("");
     const [showAlert, setShowAlert] = useState(false);
 
-    const handleChange = (event) => {
-        setMessage(event.target.value);
+    const handleChange = (post) => {
+        setMessage(post.target.value);
       };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+    const handleSubmit = async (post) => {
+        post.preventDefault();
         const formData = new FormData();
 
         formData.append("profile", profileId);
         formData.append("message", message);
         try {
-          await axiosRes.post('/contact/', formData);
+          await axiosRes.post('/messaging/', formData);
           setMessage("")
           setShowAlert(true)
           setVariant("success")

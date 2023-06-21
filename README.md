@@ -299,6 +299,7 @@ In the Deploy tab:
 
 - [React documentation](https://reactjs.org/docs/getting-started.html)
 - [React Bootstrap documentation and examples](https://react-bootstrap.github.io/)
+- [Stackoverflow](https://stackoverflow.com/)
 
 ### Code
 

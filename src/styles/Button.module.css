@@ -53,11 +53,29 @@
   
   .Black:hover,
   .BlackOutline {
-    background-color: aliceblue;
-    color: #242a3d;
+    background-color: #dadadf;
+    color: #515a50;
   }
   
   .Bright {
     background-color: #A43F2D;
     color: white;
   }
+
+  .Reply {
+    background-color: #A43F2D;
+}
+
+.Reply:hover,
+.ReplyOutline{
+  background-color: #515a50;;
+}
+
+.Form {
+  background-color: #A43F2D; 
+}
+
+.Form:hover,
+.FormOutline{
+  background-color: #515a50;;
+}
