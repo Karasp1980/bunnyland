@@ -100,7 +100,6 @@ function PostCreateForm() {
           value={category} 
           onChange={handleChange}
         >
-          <option value="new_home_needed">New home needed</option>
           <option value="tip">Tip</option>
           <option value="help_needed">Help needed</option>
           <option value="other">Other</option>
