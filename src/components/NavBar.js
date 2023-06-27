@@ -114,6 +114,15 @@ const NavBar = () => {
               <i className="fas fa-home"></i>Home
             </NavLink>
 
+            <NavLink
+              exact
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+              to="/adoptionposts"
+            >
+              <i className="fa-brands fa-gratipay"></i>Adopt
+            </NavLink>
+
             {currentUser ? loggedInIcons : loggedOutIcons}
           </Nav>
         </Navbar.Collapse>
