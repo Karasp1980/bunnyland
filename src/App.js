@@ -14,6 +14,10 @@ import ProfilePage from "./pages/profiles/ProfilePage";
 import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
+import AdoptionpostCreateForm from "./pages/adoptionposts/AdoptionpostCreateForm";
+import AdoptionpostPage from "./pages/adoptionposts/AdoptionpostPage";
+import AdoptionpostsPage from "./pages/adoptionposts/AdoptionpostsPage";
+import AdoptionpostEditForm from "./pages/adoptionposts/AdoptionpostEditForm";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -31,6 +35,15 @@ function App() {
               <PostsPage message="No results found. Adjust the search keyword." />
             )}
           />
+
+          <Route
+            exact
+            path="/adoptionposts"
+            render={() => (
+              <AdoptionpostsPage message="No results found. Adjust the search keyword." />
+            )}
+          />      
+
           <Route
             exact
             path="/feed"
@@ -56,6 +69,9 @@ function App() {
           <Route exact path="/posts/create" render={() => <PostCreateForm />} />
           <Route exact path="/posts/:id" render={() => <PostPage />} />
           <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
+          <Route exact path="/adoptionposts/create" render={() => <AdoptionpostCreateForm />} />
+          <Route exact path="/adoptionposts/:id" render={() => <AdoptionpostPage />} />
+          <Route exact path="/adoptionposts/:id/edit" render={() => <AdoptionpostEditForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           <Route
             exact

@@ -5,31 +5,31 @@ import { axiosRes } from "../../api/axiosDefaults";
 
 import styles from "../../styles/CommentCreateEditForm.module.css";
 
-function CommentEditForm(props) {
+function AdoptioncommentEditForm(props) {
   const { id, content, setShowEditForm, setComments } = props;
 
   const [formContent, setFormContent] = useState(content);
 
-  const handleChange = (post) => {
-    setFormContent(post.target.value);
+  const handleChange = (adoption) => {
+    setFormContent(adoption.target.value);
   };
 
-  const handleSubmit = async (post) => {
-    post.preventDefault();
+  const handleSubmit = async (adoption) => {
+    adoption.preventDefault();
     try {
-      await axiosRes.put(`/comments/${id}/`, {
+      await axiosRes.put(`/adoptioncomments/${id}/`, {
         content: formContent.trim(),
       });
       setComments((prevComments) => ({
         ...prevComments,
-        results: prevComments.results.map((comment) => {
-          return comment.id === id
+        results: prevComments.results.map((adoptioncomment) => {
+          return adoptioncomment.id === id
             ? {
-                ...comment,
+                ...adoptioncomment,
                 content: formContent.trim(),
                 updated_at: "now",
               }
-            : comment;
+            : adoptioncomment;
         }),
       }));
       setShowEditForm(false);
@@ -69,4 +69,4 @@ function CommentEditForm(props) {
   );
 }
 
-export default CommentEditForm;
+export default AdoptioncommentEditForm;

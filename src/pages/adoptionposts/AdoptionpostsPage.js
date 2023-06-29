@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-import Post from "./Post";
+import Adoptionpost from "./Adoptionpost";
 import Asset from "../../components/Asset";
 
 import appStyles from "../../App.module.css";
@@ -18,8 +18,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
 
-function PostsPage({ message, filter = "" }) {
-  const [posts, setPosts] = useState({ results: [] });
+function AdoptionpostsPage({ message, filter = "" }) {
+  const [adoptionposts, setPosts] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
 
@@ -28,7 +28,7 @@ function PostsPage({ message, filter = "" }) {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const { data } = await axiosReq.get(`/posts/?${filter}search=${query}`);
+        const { data } = await axiosReq.get(`/adoption/?${filter}search=${query}`);
         setPosts(data);
         setHasLoaded(true);
       } catch (err) {
@@ -66,15 +66,15 @@ function PostsPage({ message, filter = "" }) {
 
         {hasLoaded ? (
           <>
-            {posts.results.length ? (
+            {adoptionposts.results.length ? (
               <InfiniteScroll
-                children={posts.results.map((post) => (
-                  <Post key={post.id} {...post} setPosts={setPosts} />
+                children={adoptionposts.results.map((adoption) => (
+                  <Adoptionpost key={adoption.id} {...adoption} setPosts={setPosts} />
                 ))}
-                dataLength={posts.results.length}
+                dataLength={adoptionposts.results.length}
                 loader={<Asset spinner />}
-                hasMore={!!posts.next}
-                next={() => fetchMoreData(posts, setPosts)}
+                hasMore={!!adoptionposts.next}
+                next={() => fetchMoreData(adoptionposts, setPosts)}
               />
             ) : (
               <Container className={appStyles.Content}>
@@ -95,4 +95,4 @@ function PostsPage({ message, filter = "" }) {
   );
 }
 
-export default PostsPage;
+export default AdoptionpostsPage;

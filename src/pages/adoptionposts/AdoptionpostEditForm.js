@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -8,64 +8,79 @@ import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Image from "react-bootstrap/Image";
 
-import Asset from "../../components/Asset";
-
-import Upload from "../../assets/upload.png";
-
 import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
-import { useRedirect } from "../../hooks/useRedirect";
 
-function PostCreateForm() {
-  useRedirect("loggedOut");
+function AdoptionpostEditForm() {
   const [errors, setErrors] = useState({});
 
   const [postData, setPostData] = useState({
     title: "",
-    category: "",
+    breed: "",
     location: "",
+    sex: "",
     content: "",
     image: "",
   });
-  const { title, category, location, content, image } = postData;
+  const { title, breed, location, sex, content, image } = postData;
 
   const imageInput = useRef(null);
   const history = useHistory();
+  const { id } = useParams();
 
-  const handleChange = (post) => {
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosReq.get(`/adoption/${id}/`);
+        const { title, breed, location, sex, content, image, is_owner } = data;
+
+        is_owner ? setPostData({ title, breed, location, sex, content, image }) : history.push("/");
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    handleMount();
+  }, [history, id]);
+
+  const handleChange = (adoption) => {
     setPostData({
       ...postData,
-      [post.target.name]: post.target.value,
+      [adoption.target.name]: adoption.target.value,
     });
   };
 
-  const handleChangeImage = (post) => {
-    if (post.target.files.length) {
+  const handleChangeImage = (adoption) => {
+    if (adoption.target.files.length) {
       URL.revokeObjectURL(image);
       setPostData({
         ...postData,
-        image: URL.createObjectURL(post.target.files[0]),
+        image: URL.createObjectURL(adoption.target.files[0]),
       });
     }
   };
 
-  const handleSubmit = async (post) => {
-    post.preventDefault();
+  const handleSubmit = async (adoption) => {
+    adoption.preventDefault();
     const formData = new FormData();
 
     formData.append("title", title);
-    formData.append("category", category);
+    formData.append("breed", breed);
     formData.append("location", location);
-    formData.append("contentent", content);
-    formData.append("image", imageInput.current.files[0]);
+    formData.append("sex", sex);
+    formData.append("content", content);
+
+    if (imageInput?.current?.files[0]) {
+      formData.append("image", imageInput.current.files[0]);
+    }
 
     try {
-      const { data } = await axiosReq.post("/posts/", formData);
-      history.push(`/posts/${data.id}`);
+      await axiosReq.put(`/adoption/${id}/`, formData);
+      history.push(`/adoption/${id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -92,20 +107,15 @@ function PostCreateForm() {
       ))}
 
       <Form.Group>
-        <Form.Label>Category</Form.Label>
-        <select
-          as="select"
+        <Form.Label>Breed:</Form.Label>
+        <Form.Control
           type="text"
-          name="category" 
-          value={category} 
+          name="breed"
+          value={breed}
           onChange={handleChange}
-        >
-          <option value="tip">Tip</option>
-          <option value="help_needed">Help needed</option>
-          <option value="other">Other</option>
-        </select>
+        />
       </Form.Group>
-      {errors?.category?.map((message, idx) => (
+      {errors?.title?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
@@ -125,6 +135,29 @@ function PostCreateForm() {
           {message}
         </Alert>
       ))}
+
+
+      <Form.Group>
+        <Form.Label>Sex:</Form.Label>
+        <select
+          as="select"
+          type="text"
+          name="sex" 
+          value={sex} 
+          onChange={handleChange}
+        >
+          <option value="male_neutered">Male, neutered</option>
+          <option value="male_unneutered">Male, unnetered</option>
+          <option value="female_spayed">Female, spayed</option>
+          <option value="female_unspayed">Female, unspayed</option>
+        </select>
+      </Form.Group>
+      {errors?.category?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+            
 
       <Form.Group>
         <Form.Label>Content</Form.Label>
@@ -149,7 +182,7 @@ function PostCreateForm() {
         cancel
       </Button>
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        create
+        save
       </Button>
     </div>
   );
@@ -162,31 +195,17 @@ function PostCreateForm() {
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
             <Form.Group className="text-center">
-              {image ? (
-                <>
-                  <figure>
-                    <Image className={appStyles.Image} src={image} rounded />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="image-upload"
-                    >
-                      Change the image
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
+              <figure>
+                <Image className={appStyles.Image} src={image} rounded />
+              </figure>
+              <div>
                 <Form.Label
-                  className="d-flex justify-content-center"
+                  className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
                   htmlFor="image-upload"
                 >
-                  <Asset
-                    src={Upload}
-                    message="Click or tap to upload an image"
-                  />
+                  Change the image
                 </Form.Label>
-              )}
+              </div>
 
               <Form.File
                 id="image-upload"
@@ -212,4 +231,4 @@ function PostCreateForm() {
   );
 }
 
-export default PostCreateForm;
+export default AdoptionpostEditForm;

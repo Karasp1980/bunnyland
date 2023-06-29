@@ -46,25 +46,25 @@ function PostEditForm() {
     handleMount();
   }, [history, id]);
 
-  const handleChange = (event) => {
+  const handleChange = (post) => {
     setPostData({
       ...postData,
-      [event.target.name]: event.target.value,
+      [post.target.name]: post.target.value,
     });
   };
 
-  const handleChangeImage = (event) => {
-    if (event.target.files.length) {
+  const handleChangeImage = (post) => {
+    if (post.target.files.length) {
       URL.revokeObjectURL(image);
       setPostData({
         ...postData,
-        image: URL.createObjectURL(event.target.files[0]),
+        image: URL.createObjectURL(post.target.files[0]),
       });
     }
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (post) => {
+    post.preventDefault();
     const formData = new FormData();
 
     formData.append("title", title);
