@@ -29,10 +29,11 @@ function AdoptionpostCreateForm() {
     breed: "",
     location: "",
     sex: "",
+    age: "",
     content: "",
     image: "",
   });
-  const { title, breed, location, sex, content, image } = postData;
+  const { title, breed, location, sex, age, content, image } = postData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -61,19 +62,21 @@ function AdoptionpostCreateForm() {
     formData.append("title", title);
     formData.append("breed", breed);
     formData.append("location", location);
-    formData.append("sex", location);
-    formData.append("contentent", content);
+    formData.append("sex", sex);
+    formData.append("age", age);
+    formData.append("content", content);
     formData.append("image", imageInput.current.files[0]);
 
     try {
       const { data } = await axiosReq.post("/adoption/", formData);
-      history.push(`/adoption/${data.id}`);
+      history.push(`/adoptionposts/${data.id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
     }
+    console.log(postData)
   };
 
   const textFields = (
@@ -102,7 +105,7 @@ function AdoptionpostCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
-      {errors?.title?.map((message, idx) => (
+      {errors?.breed?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
@@ -117,7 +120,7 @@ function AdoptionpostCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
-      {errors?.title?.map((message, idx) => (
+      {errors?.location?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
@@ -138,12 +141,26 @@ function AdoptionpostCreateForm() {
           <option value="female_unspayed">Female, unspayed</option>
         </select>
       </Form.Group>
-      {errors?.category?.map((message, idx) => (
+      {errors?.sex?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
       ))}
             
+      <Form.Group>
+        <Form.Label>Age:</Form.Label>
+        <Form.Control
+          type="text"
+          name="age"
+          value={age}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.age?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group>
         <Form.Label>Content</Form.Label>

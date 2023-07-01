@@ -26,7 +26,7 @@ function AdoptionpostEditForm() {
     content: "",
     image: "",
   });
-  const { title, breed, location, sex, content, image } = postData;
+  const { title, breed, location, sex, age, content, image } = postData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -36,9 +36,9 @@ function AdoptionpostEditForm() {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/adoption/${id}/`);
-        const { title, breed, location, sex, content, image, is_owner } = data;
+        const { title, breed, location, sex, age, content, image, is_owner } = data;
 
-        is_owner ? setPostData({ title, breed, location, sex, content, image }) : history.push("/");
+        is_owner ? setPostData({ title, breed, location, sex, age, content, image }) : history.push("/");
       } catch (err) {
         console.log(err);
       }
@@ -72,6 +72,7 @@ function AdoptionpostEditForm() {
     formData.append("breed", breed);
     formData.append("location", location);
     formData.append("sex", sex);
+    formData.append("age", age);
     formData.append("content", content);
 
     if (imageInput?.current?.files[0]) {
@@ -80,7 +81,7 @@ function AdoptionpostEditForm() {
 
     try {
       await axiosReq.put(`/adoption/${id}/`, formData);
-      history.push(`/adoption/${id}`);
+      history.push(`/adoptionposts/${id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -115,7 +116,7 @@ function AdoptionpostEditForm() {
           onChange={handleChange}
         />
       </Form.Group>
-      {errors?.title?.map((message, idx) => (
+      {errors?.breed?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
@@ -130,7 +131,7 @@ function AdoptionpostEditForm() {
           onChange={handleChange}
         />
       </Form.Group>
-      {errors?.title?.map((message, idx) => (
+      {errors?.location?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
@@ -152,12 +153,26 @@ function AdoptionpostEditForm() {
           <option value="female_unspayed">Female, unspayed</option>
         </select>
       </Form.Group>
-      {errors?.category?.map((message, idx) => (
+      {errors?.sex?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
       ))}
             
+      <Form.Group>
+        <Form.Label>Age</Form.Label>
+        <Form.Control
+          type="text"
+          name="age"
+          value={age}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.age?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group>
         <Form.Label>Content</Form.Label>

@@ -48,7 +48,7 @@ function AdoptionpostPage() {
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
        
-        <Adoptionpost {...adoption.results[0]} setPosts={setPost} postPage />
+        <Adoptionpost {...adoption.results[0]} setPosts={setPost} adoptionpostPage />
         <Container className={appStyles.Content}>
           {currentUser ? (
             <AdoptioncommentCreateForm

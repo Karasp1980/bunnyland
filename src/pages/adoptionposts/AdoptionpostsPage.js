@@ -19,7 +19,7 @@ import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
 
 function AdoptionpostsPage({ message, filter = "" }) {
-  const [adoptionposts, setPosts] = useState({ results: [] });
+  const [adoption, setPosts] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
 
@@ -66,15 +66,15 @@ function AdoptionpostsPage({ message, filter = "" }) {
 
         {hasLoaded ? (
           <>
-            {adoptionposts.results.length ? (
+            {adoption.results.length ? (
               <InfiniteScroll
-                children={adoptionposts.results.map((adoption) => (
+                children={adoption.results.map((adoption) => (
                   <Adoptionpost key={adoption.id} {...adoption} setPosts={setPosts} />
                 ))}
-                dataLength={adoptionposts.results.length}
+                dataLength={adoption.results.length}
                 loader={<Asset spinner />}
-                hasMore={!!adoptionposts.next}
-                next={() => fetchMoreData(adoptionposts, setPosts)}
+                hasMore={!!adoption.next}
+                next={() => fetchMoreData(adoption, setPosts)}
               />
             ) : (
               <Container className={appStyles.Content}>

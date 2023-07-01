@@ -15,7 +15,7 @@ const Adoptionpost = (props) => {
     profile_image,
     adoptioncomments_count,
     adoptionlikes_count,
-    like_id,
+    adoptionlike_id,
     title,
     content,
     image,
@@ -25,6 +25,7 @@ const Adoptionpost = (props) => {
     breed,
     location,
     sex,
+    age,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -46,12 +47,12 @@ const Adoptionpost = (props) => {
 
   const handleLike = async () => {
     try {
-      const { data } = await axiosRes.post("/adoptionlikes/", { adoption: id });
+      const { data } = await axiosRes.adoption("/adoptionlikes/", { adoption: id });
       setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((adoption) => {
           return adoption.id === id
-            ? { ...adoption, adoptionlikes_count: adoption.likes_count + 1, adoptionlike_id: data.id }
+            ? { ...adoption, adoptionlikes_count: adoption.adoptionlikes_count + 1, adoptionlike_id: data.id }
             : adoption;
         }),
       }));
@@ -62,12 +63,12 @@ const Adoptionpost = (props) => {
 
   const handleUnlike = async () => {
     try {
-      await axiosRes.delete(`/adoptionlikes/${like_id}/`);
+      await axiosRes.delete(`/adoptionlikes/${adoptionlike_id}/`);
       setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((adoption) => {
           return adoption.id === id
-            ? { ...adoption, adoptionlikes_count: adoption.likes_count - 1, adoptionlike_id: null }
+            ? { ...adoption, adoptionlikes_count: adoption.adoptionlikes_count - 1, adoptionlike_id: null }
             : adoption;
         }),
       }));
@@ -95,7 +96,7 @@ const Adoptionpost = (props) => {
           </div>
         </Media>
       </Card.Body>
-      <Link to={`/posts/${id}`}>
+      <Link to={`/adoptionposts/${id}`}>
         <Card.Img src={image} alt={title} />
       </Link>
       <Card.Body>
@@ -109,7 +110,7 @@ const Adoptionpost = (props) => {
             >
               <i className="far fa-heart" />
             </OverlayTrigger>
-          ) : like_id ? (
+          ) : adoptionlike_id ? (
             <span onClick={handleUnlike}>
               <i className={`fas fa-heart ${styles.Heart}`} />
             </span>
@@ -144,6 +145,10 @@ const Adoptionpost = (props) => {
           <div>
             <span>Sex: </span>
             <span>{sex}</span>
+          </div>
+          <div>
+            <span>Age:</span>
+            <span>{age}</span>
           </div>
         </div>
       </Card.Body>
