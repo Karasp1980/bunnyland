@@ -17,13 +17,13 @@ const Post = (props) => {
     likes_count,
     like_id,
     title,
+    category,
+    location,
     content,
     image,
     updated_at,
     postPage,
     setPosts,
-    category,
-    location,
   } = props;
 
   const currentUser = useCurrentUser();
