@@ -33,7 +33,7 @@ const Adoptionpost = (props) => {
   const history = useHistory();
 
   const handleEdit = () => {
-    history.push(`/adoption/${id}/edit`);
+    history.push(`/adoptionposts/${id}/edit`);
   };
 
   const handleDelete = async () => {
