@@ -84,10 +84,11 @@ function AdoptionpostPage() {
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        Popular profiles 
+        
       </Col>
     </Row>
   );
 }
+
 
 export default AdoptionpostPage;
