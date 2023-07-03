@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
+import btnStyles from "../../styles/Button.module.css";
 
 const Adoptionpost = (props) => {
   const {
@@ -150,6 +151,10 @@ const Adoptionpost = (props) => {
             <span>Age:</span>
             <span>{age}</span>
           </div>
+        </div>
+        <br></br>
+        <div>
+            <button className={`${btnStyles.Button} ${btnStyles.Black}`}>Adoption Request</button>
         </div>
       </Card.Body>
     </Card>
