@@ -73,6 +73,7 @@ function App() {
           <Route exact path="/adoptionposts/:id" render={() => <AdoptionpostPage />} />
           <Route exact path="/adoptionposts/:id/edit" render={() => <AdoptionpostEditForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+          
           <Route
             exact
             path="/profiles/:id/edit/username"

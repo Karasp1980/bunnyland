@@ -3,15 +3,15 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 // Component imports
 import Avatar from '../../components/Avatar';
-import MessageReplyForm from './AdoptionrequestReplyForm';
 import AlertMessage from '../../components/AlertMessage';
 // Bootstrap imports
 import Media from 'react-bootstrap/Media';
 import Button from 'react-bootstrap/Button';
 // CSS imports
 import btnStyles from '../../styles/Button.module.css'
+import AdoptionrequestReplyForm from "../adoptionrequest/AdoptionrequestReplyForm";
 
-const Adoptionequest = (props) => {
+const Adoptionrequest = (props) => {
 
     const { 
       profile_id, 
@@ -62,7 +62,7 @@ const Adoptionequest = (props) => {
         </Button>
       </Media>
       <AlertMessage showAlert={showAlert} setShowAlert variant={variant} alertMessage={alertMessage}/>
-      <AdoptionmessageReplyForm profile_id={profile_id} owner={owner} showModal={show} handleClose={handleClose} handleAlert={handleAlert} />
+      <AdoptionrequestReplyForm profile_id={profile_id} owner={owner} showModal={show} handleClose={handleClose} handleAlert={handleAlert} />
     </div>
   )
 }
