@@ -25,6 +25,7 @@ import NoResults from "../../assets/no-results.png";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
 import MessageCreateForm from "../messages/MessageCreateForm";
 import Message from "../messages/Message";
+import Adoptionrequest from "../adoptionrequest/Adoptionrequest";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -41,15 +42,20 @@ function ProfilePage() {
   const is_owner = currentUser?.username === profile?.owner;
   const [profileMessages, setProfileMessages] = useState({results: []});
   const [isMounted, setIsMounted] = useState(false);
+
+  const [profileAdoptionrequest, setProfileAdoptionrequest] = useState({ results: []});
+
+
   
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [{ data: pageProfile }, { data: profilePosts },{ data: profileMessages },] =
+        const [{ data: pageProfile }, { data: profilePosts },{ data: profileMessages }, { data: profileAdoptionrequest },] =
           await Promise.all([
             axiosReq.get(`/profiles/${id}/`),
             axiosReq.get(`/posts/?owner__profile=${id}`),
             axiosReq.get(`/messaging/?profile=${id}`),
+            axiosReq.get(`/adoptionrequest/?owner__profile=${id}`),
           ]);
         setProfileData((prevState) => ({
           ...prevState,
@@ -57,6 +63,7 @@ function ProfilePage() {
         }));
         setProfilePosts(profilePosts);
         setProfileMessages(profileMessages);
+        setProfileAdoptionrequest(profileAdoptionrequest);
         setHasLoaded(true);
         setIsMounted(true);
       } catch (err) {
@@ -164,6 +171,38 @@ function ProfilePage() {
     </>
   );
 
+  const mainProfileAdoptionrequest = (
+    <>
+      <Container className={`${appStyles.Content} ${styles.AdoptionRequests}`}>
+        <h3 className="text-center">Adoption Requests</h3>
+        
+        {profileAdoptionrequest.results.length ? (
+          <InfiniteScroll 
+          children={
+            profileAdoptionrequest.results.map((adoptionRequest) => (
+              <Adoptionrequest 
+              key={adoptionRequest.id}
+              name={adoptionRequest.name} 
+              phone={adoptionRequest.phone} 
+              email={adoptionRequest.email} 
+              adoptionMessage={adoptionRequest.adoptionMessage} 
+              {...adoptionRequest} 
+              />
+            ))
+          } 
+          dataLength={profileAdoptionrequest.results.length}
+          loader={<Asset spinner />}
+          hasMore={!!profileAdoptionrequest.next}
+          next={() => fetchMoreData(profileAdoptionrequest, setProfileAdoptionrequest)}
+          />
+        ) : (
+          <Asset message={`no adoption requests yet...`} />
+        )}
+      </Container>
+    </>
+  );
+  
+
   return (
     <Row>
       <Col className="py-2 p-0 p-lg-2" lg={8}>
@@ -176,6 +215,7 @@ function ProfilePage() {
           (hasLoaded ? (
             <Container className="d-lg-none mb-3">
               {mainProfileMessages}
+              {mainProfileAdoptionrequest}
             </Container>
           ) : (
             <Asset spinner />
@@ -205,6 +245,7 @@ function ProfilePage() {
             (hasLoaded ? (
               <Container className="d-none d-lg-block">
                 {mainProfileMessages}
+                {mainProfileAdoptionrequest}
               </Container>
             ) : (
               <Asset spinner />

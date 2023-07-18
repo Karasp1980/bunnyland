@@ -47,6 +47,7 @@ const Adoptionpost = (props) => {
   const [showModal, setShowModal] = useState(false);
   const profileId=currentUser?.profile_id
   
+  
 
   const handleEdit = () => {
     history.push(`/adoptionposts/${id}/edit`);
@@ -137,7 +138,7 @@ const Adoptionpost = (props) => {
       adoption.preventDefault();
       const formData = new FormData();
 
-     
+  
       formData.append("profile", parseInt(profileId));
       formData.append("name", name);
       formData.append("phone", phone);
