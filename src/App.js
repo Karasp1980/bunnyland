@@ -18,6 +18,7 @@ import AdoptionpostCreateForm from "./pages/adoptionposts/AdoptionpostCreateForm
 import AdoptionpostPage from "./pages/adoptionposts/AdoptionpostPage";
 import AdoptionpostsPage from "./pages/adoptionposts/AdoptionpostsPage";
 import AdoptionpostEditForm from "./pages/adoptionposts/AdoptionpostEditForm";
+import NotFound from "./components/NotFound";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -89,8 +90,8 @@ function App() {
             path="/profiles/:id/edit"
             render={() => <ProfileEditForm />}
           />
-
-          <Route render={() => <p>Page not found!</p>} />
+  
+          <Route render={() => <NotFound />} />
         </Switch>
       </Container>
     </div>
