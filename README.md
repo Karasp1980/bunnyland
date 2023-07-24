@@ -55,7 +55,7 @@ The objective of this project is to build a community-based rabbit content shari
 
 ## Site User's Goal
 
-There are primarily two types of users who will be interacting with this platform; rabbit owners, users interested in adopting and rabbit interested users who would like to gain info.
+There are primarily three types of users who will be interacting with this platform; rabbit owners, users interested in adopting and rabbit interested users who would like to gain info.
 
 The event hosts want to share the details of upcoming events with as many members of the local community in one single sharing platform and then gauge two things as a result of the post. Prior to the event happening, the user can see how many people are interested in the event or plan to attend the event. They can also read people's comments regarding the event, and receive messages from interested users who have questions. After the event has taken place, they can read reviews given about the event and see individual ratings and an overall average rating for the event. 
 

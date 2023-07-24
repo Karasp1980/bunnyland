@@ -55,8 +55,9 @@ function ProfilePage() {
             axiosReq.get(`/profiles/${id}/`),
             axiosReq.get(`/posts/?owner__profile=${id}`),
             axiosReq.get(`/messaging/?profile=${id}`),
-            axiosReq.get(`/adoptionrequest/?owner__profile=${id}`),
+            axiosReq.get(`/adoptionrequest/?profile=${id}`),
           ]);
+          
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [pageProfile] },

@@ -64,7 +64,7 @@ const Adoptionpost = (props) => {
 
   const handleLike = async () => {
     try {
-      const { data } = await axiosRes.adoption("/adoptionlikes/", { adoption: id });
+      const { data } = await axiosRes.post("/adoptionlikes/", { adoption: id });
       setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((adoption) => {
@@ -139,7 +139,8 @@ const Adoptionpost = (props) => {
       const formData = new FormData();
 
   
-      formData.append("profile", parseInt(profileId));
+      formData.append("owner", parseInt(profileId));
+      formData.append("adoption", id);
       formData.append("name", name);
       formData.append("phone", phone);
       formData.append("email", email);
