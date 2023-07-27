@@ -145,6 +145,7 @@ const Adoptionpost = (props) => {
       formData.append("phone", phone);
       formData.append("email", email);
       formData.append("adoptionmessage", adoptionmessage);
+      formData.append("profile", profileId);
       try {
         await axiosRes.post('/adoptionrequest/', formData);
         setName("")

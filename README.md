@@ -507,6 +507,7 @@ This fictional site was created for Portfolio Project #5 (Advanced Front End Spe
 - [Stackoverflow](https://stackoverflow.com/questions/73040005/react-show-bootstrap-modal-in-different-component)
 - [Stackoverflow](https://stackoverflow.com)
 - [Djangoproject](https://docs.djangoproject.com/en/4.2/topics/db/examples/many_to_one/)
+- [Corgibytes](https://corgibytes.com/blog/2022/06/14/model-relationships-django-rest-framework/)
 
 
 
@@ -527,6 +528,7 @@ This fictional site was created for Portfolio Project #5 (Advanced Front End Spe
 * [Happening - API](https://github.com/quiltingcode/events-backend-api)
 * [Gear addict](https://github.com/Matthew-Hurrell/gear-addict)
 * [Gear addict - API](https://github.com/Matthew-Hurrell/gear-addict-api)
+
 
 
 
