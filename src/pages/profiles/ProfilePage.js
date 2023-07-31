@@ -20,6 +20,7 @@ import {
 import { Button, Image } from "react-bootstrap";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Post from "../posts/Post";
+import Adoptionpost from "../adoptionposts/Adoptionpost";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
@@ -30,6 +31,7 @@ import Adoptionrequest from "../adoptionrequest/Adoptionrequest";
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [profilePosts, setProfilePosts] = useState({ results: [] });
+  const [profileAdoptionpost, setProfileAdoptionpost] = useState({ results: [] });
   const elementRef = useRef(null)
 
   const currentUser = useCurrentUser();
@@ -50,10 +52,11 @@ function ProfilePage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [{ data: pageProfile }, { data: profilePosts },{ data: profileMessages }, { data: profileAdoptionrequest },] =
+        const [{ data: pageProfile }, { data: profilePosts },{ data: profileAdoptionpost },{ data: profileMessages }, { data: profileAdoptionrequest },] =
           await Promise.all([
             axiosReq.get(`/profiles/${id}/`),
             axiosReq.get(`/posts/?owner__profile=${id}`),
+            axiosReq.get(`/adoption/?owner__profile=${id}`),
             axiosReq.get(`/messaging/?profile=${id}`),
             axiosReq.get(`/adoptionrequest/?adoption__owner__profile=${id}`),
           ]);
@@ -63,6 +66,7 @@ function ProfilePage() {
           pageProfile: { results: [pageProfile] },
         }));
         setProfilePosts(profilePosts);
+        setProfileAdoptionpost(profileAdoptionpost);
         setProfileMessages(profileMessages);
         setProfileAdoptionrequest(profileAdoptionrequest);
         setHasLoaded(true);
@@ -131,15 +135,18 @@ function ProfilePage() {
       <hr />
       <p className="text-center">{profile?.owner}'s posts</p>
       <hr />
-      {profilePosts.results.length ? (
+      {profilePosts.results.length || profileAdoptionpost.results.length  ? (
         <InfiniteScroll
-          children={profilePosts.results.map((post) => (
+          children={[profilePosts.results.map((post) => (
             <Post key={post.id} {...post} setPosts={setProfilePosts} />
-          ))}
-          dataLength={profilePosts.results.length}
+          )),
+        profileAdoptionpost.results.map((adoption) => (
+          <Adoptionpost key={adoption.id} {...adoption} setAdoptionpost={setProfileAdoptionpost} />
+        )),]}
+          dataLength={profilePosts.results.length + profileAdoptionpost.results.length}
           loader={<Asset spinner />}
-          hasMore={!!profilePosts.next}
-          next={() => fetchMoreData(profilePosts, setProfilePosts)}
+          hasMore={!!profilePosts.next || profileAdoptionpost.next}
+          next={() => fetchMoreData(profilePosts, setProfilePosts, profileAdoptionpost, setProfileAdoptionpost)}
         />
       ) : (
         <Asset

@@ -60,7 +60,7 @@ function PostCreateForm() {
     formData.append("title", title);
     formData.append("category", category);
     formData.append("location", location);
-    formData.append("contentent", content);
+    formData.append("content", content);
     formData.append("image", imageInput.current.files[0]);
 
     try {

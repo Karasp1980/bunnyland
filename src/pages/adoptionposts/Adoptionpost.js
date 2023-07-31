@@ -1,3 +1,4 @@
+
 import React from "react";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
@@ -15,7 +16,6 @@ import Alert from 'react-bootstrap/Alert';
 import AlertMessage from '../../components/AlertMessage';
 
 
-
 const Adoptionpost = (props) => {
   const {
     id,
@@ -30,7 +30,7 @@ const Adoptionpost = (props) => {
     image,
     updated_at,
     adoptionpostPage,
-    setPosts,
+    setAdoptionposts,
     breed,
     location,
     sex,
@@ -65,7 +65,7 @@ const Adoptionpost = (props) => {
   const handleLike = async () => {
     try {
       const { data } = await axiosRes.post("/adoptionlikes/", { adoption: id });
-      setPosts((prevPosts) => ({
+      setAdoptionposts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((adoption) => {
           return adoption.id === id
@@ -81,7 +81,7 @@ const Adoptionpost = (props) => {
   const handleUnlike = async () => {
     try {
       await axiosRes.delete(`/adoptionlikes/${adoptionlike_id}/`);
-      setPosts((prevPosts) => ({
+      setAdoptionposts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((adoption) => {
           return adoption.id === id
@@ -324,3 +324,10 @@ const Adoptionpost = (props) => {
 }
 
 export default Adoptionpost;  
+ 
+
+
+ 
+
+
+
