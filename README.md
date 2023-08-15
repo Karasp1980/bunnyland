@@ -51,19 +51,16 @@ This fictional site was created for Portfolio Project #5 (Advanced Front End) - 
 
 ## Objective
 
-The objective of this project is to build a community-based rabbit content sharing web application for rabbit owners/rabbit interested allowing users to learn, adopt and communicate. The platform allows users to view, create, edit, delete, like and comment postings and adoptionposts (placed on a separate adoption site, which is found in the navbar menu). On the adoptionposts the user can click an "Adoption request" button to fill in a form (fill in contact details) which is sent to the adoptionpost owner to notify interest in adopting the rabbit. The content can be viewed in a logical order, searched on by keywords. Users can also follow each other and register their interest in other user's shared content. 
+The objective of this project is to build a community-based rabbit content sharing web application for rabbit owners/rabbit interested allowing users to learn, adopt and communicate. The platform allows users to view, create, edit, delete, like and comment postings and adoptionposts (placed on a separate adoption site, which is found in the navbar menu). On the adoptionposts the user can click an "Adoption request" button to fill in a form (with contact details) which is sent to the adoptionpost owner to notify interest in adopting the rabbit. The content can be viewed in a logical order, searched on by keywords. Users can also follow each other and register their interest in other user's shared content and also send a message to another user/correspond through the message function.
 
 ## Site User's Goal
 
-There are primarily three types of users who will be interacting with this platform; rabbit owners, users interested in adopting and rabbit interested users who would like to gain info.
+There are primarily three types of users who will be interacting with this platform; rabbit owners, users interested in adopting and rabbit interested users who would like to gain info. 
 
-The event hosts want to share the details of upcoming events with as many members of the local community in one single sharing platform and then gauge two things as a result of the post. Prior to the event happening, the user can see how many people are interested in the event or plan to attend the event. They can also read people's comments regarding the event, and receive messages from interested users who have questions. After the event has taken place, they can read reviews given about the event and see individual ratings and an overall average rating for the event. 
-
-All remaining members of the community who are not hosting events, want to find out about all the upcoming events happening in the local area in one single platform. The users can view the full details of each event in an ordered manner, or filter the full list of events based on their personal preferences. Users can show their interest in an event or show they plan to attend. They can write public comments about the event while it is being advertised for others to read, and once the event has taken place they can add a review as well, giving the hosts and other users excellent feedback. If in doubt users can send each other direct messages, or find further contact details within the profile page. 
 
 ## Site Owner's Goal
 
-As the site owner, I saw a problem in the town where I live which I have tried to solve with this platform. I want all members of the local community to be able to find out what is happening in the town in a single dedicated platform. However, not only can they simply see all the event posters listed in one place, they also have the ability to interact with the content, share opinions publicly and contact the event organisers. 
+As the site owner, I saw a need for a bunny comunity to share tips and info about rabbits. Since there are many rabbits who needs a new home due to different circumstances an important part of the site  should also provide an easy way to adopt a bunny.
 
 ## Project Management
 
@@ -76,7 +73,8 @@ I've been using the project board in GitHub to keep my project together. In the 
 
 ### Database Schema
 
-All the models have been set up in a separate DRF repository. Click [here](https://github.com/Karasp1980/drf-backend) to view the repository or [here](bunnyland-drf.herokuapp.com) to view the deployed API.
+All the models have been set up in a separate DRF repository. Click [here](https://github.com/Karasp1980/drf-backend) to view the repository or [here](bunnyland-drf.herokuapp.com) to view the deployed API. The database schema can be seen here:
+[Database schema]((images/databaseschema.png))
 
  
 [Back to top](<#table-of-contents>)
@@ -89,12 +87,18 @@ The wireframes for the site were created in the software [Balsamiq](https://bals
 
 <details><summary><b>Wireframes</b></summary>
 
-![Home Page](images/events-page.png)
-![Posts Detail Page](images/event-detail.png)
-![Adoption Page - Mobile](images/events-page-mobile.png)
-![Adoption Detail Page - Mobile](images/events-page-mobile.png)
-![Profile Page](images/profile-page.png)
-![Profile Page - Mobile](images/profile-page-mobile.png)
+![Home Page Desktop SignedOut](images/wireframe-desktop-homepage-signedout.png)
+![Home Page Desktop SignedIn](images/wireframe-desktop-homepage-signedin.png)
+![Desktop Adopt](images/wireframe-desktop-adoption.png)
+![Desktop Profile Page](images/wireframe-desktop-profilepage.png)
+
+![Home Page Tablet](images/wireframe-tablet-homepage.png)
+![Adopt Tablet](images/wireframe-tablet-adoption.png)
+![Profile Page Table](images/wireframe-tablet-profilepage.png)
+
+![Home Page Mobile](images/wireframe-mobile-homepage.png)
+![Adopt Mobile](images/wireframe-mobile-adoption.png)
+![Profile Page Mobile](images/wireframe-mobile-profilepage.png)
 
 </details><br/>
 
