@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -8,7 +9,6 @@ import Asset from "../../components/Asset";
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-
 
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router";
@@ -46,7 +46,6 @@ function ProfilePage() {
   const [isMounted, setIsMounted] = useState(false);
 
   const [profileAdoptionrequest, setProfileAdoptionrequest] = useState({ results: []});
-
 
   
   useEffect(() => {
@@ -265,4 +264,5 @@ function ProfilePage() {
 }     
 
 export default ProfilePage;
+
 

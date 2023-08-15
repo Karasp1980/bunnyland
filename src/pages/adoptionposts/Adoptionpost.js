@@ -16,6 +16,7 @@ import Alert from 'react-bootstrap/Alert';
 import AlertMessage from '../../components/AlertMessage';
 
 
+
 const Adoptionpost = (props) => {
   const {
     id,

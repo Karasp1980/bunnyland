@@ -26,13 +26,13 @@ This fictional site was created for Portfolio Project #5 (Advanced Front End) - 
   * [Navigation](#navigation)
   * [Authentication](#authentication)
   * [Homepage](#homepage)
+  * [Adoption](#adoption)
   * [Feed](#feed)
-  * [My Events](#my-events)
-  * [Create an Event](#create-an-event)
-  * [Event Detail Page](#event-detail-page)
-  * [Reviews](#reviews)
+  * [Create a Post](#create-a-post)
+  * [Create an Acoptionpost](#create-an-adoptionpost)
+  * [Post Detail Page](#post-detail-page)
+  * [Acoptionpost Detail Page](#adoptionpost-detail-page)
   * [Profile Page](#profile-page)
-  * [Contact](#contact)
   * [Reusable React Components](#reusable-react-components)
 
 - [Features Left To Implement](<#features-left-to-implement>)
@@ -51,7 +51,7 @@ This fictional site was created for Portfolio Project #5 (Advanced Front End) - 
 
 ## Objective
 
-The objective of this project is to build a community-based rabbit content sharing web application for rabbit owners/rabbit interested allowing users to learn, adopt and communicate. The platform allows users to view, create, edit, delete, like and comment postings. The content can be viewed in a logical order, searched on by keywords. Users can also follow each other and register their interest in other user's shared content. 
+The objective of this project is to build a community-based rabbit content sharing web application for rabbit owners/rabbit interested allowing users to learn, adopt and communicate. The platform allows users to view, create, edit, delete, like and comment postings and adoptionposts (placed on a separate adoption site, which is found in the navbar menu). On the adoptionposts the user can click an "Adoption request" button to fill in a form (fill in contact details) which is sent to the adoptionpost owner to notify interest in adopting the rabbit. The content can be viewed in a logical order, searched on by keywords. Users can also follow each other and register their interest in other user's shared content. 
 
 ## Site User's Goal
 
@@ -69,16 +69,14 @@ As the site owner, I saw a problem in the town where I live which I have tried t
 
 ### Github Project Board
 
-I've been using the project board in GitHub to keep my project together. In the initial design phase, it was really helpful to plan the project as a whole, and create the user stories based on my wireframe designs. I created a Milestone for each main app created in the backend API plus one additional for Navigation and Authentication, in order to maintain a similar structure to the backend [Project Board](https://github.com/users/quiltingcode/projects/5). Each milestone has a list of bullet points for the main desired frontend features. Then, I created a linked User Story for each feature and gave it a level of prioritization using the MoSCoW method and a number of User Story points to indicate the level of difficulty for that feature.
-
-Later on, during the build, I also used the Project Board to log and track bugs found in my code which could not be fixed immmediately. Where git commits are directly related to a user story, the commit message has been linked to the user story via the hashtag numbering system. 
+I've been using the project board in GitHub to keep my project together. In the initial design phase, it was really helpful to plan the project as a whole, and create the user stories based on my wireframe designs. I created a Milestone for each main app created in the backend API plus one additional for Navigation and Authentication, in order to maintain a similar structure to the backend [Project Board](https://github.com/users/Karasp1980/projects/9/views/1). Each milestone has a list of bullet points for the main desired frontend features. Then, I created a linked User Story for each feature and gave it a level of prioritization using the MoSCoW method and a number of User Story points to indicate the level of difficulty for that feature.
 
 ![User Stories](images/user-stories.jpg)
 ![Project Board](images/project-board.jpg)
 
 ### Database Schema
 
-All the models have been set up in a separate DRF repository. Click [here](https://github.com/quiltingcode/events-backend-api) to view the repository or [here](https://happening-api-kelz.herokuapp.com/) to view the deployed API.
+All the models have been set up in a separate DRF repository. Click [here](https://github.com/Karasp1980/drf-backend) to view the repository or [here](bunnyland-drf.herokuapp.com) to view the deployed API.
 
  
 [Back to top](<#table-of-contents>)
@@ -91,13 +89,12 @@ The wireframes for the site were created in the software [Balsamiq](https://bals
 
 <details><summary><b>Wireframes</b></summary>
 
-![Events Page](images/events-page.png)
-![Events Detail Page](images/event-detail.png)
-![Events Page - Mobile](images/events-page-mobile.png)
+![Home Page](images/events-page.png)
+![Posts Detail Page](images/event-detail.png)
+![Adoption Page - Mobile](images/events-page-mobile.png)
+![Adoption Detail Page - Mobile](images/events-page-mobile.png)
 ![Profile Page](images/profile-page.png)
 ![Profile Page - Mobile](images/profile-page-mobile.png)
-![Reviews Page](images/reviews-page.png)
-![Reviews Page - Comments](images/review-comments.png)
 
 </details><br/>
 
@@ -234,13 +231,13 @@ The feed page looks identical to the homepage, only the Events Posts component c
 
 ![Feed- No Results](images/no-results.jpg)
 
-* ## My Events
+* ## Posts
 
 The My Events page looks identical to the homepage, only the Events Posts component changes. On selecting the My Events menu option in the NavBar, you are shown a dropdown with two additional options. Interested or Going. If you select interested, the events posts component will be filtered to only show the events where the logged in user has clicked the interested button. Alternatively, if the user selects the going option from navbar dropdown, the filter changes to only show events where the logged in user has clicked the going button. 
 
 In the original plan for this project, I wanted the My Events page to be a combination of all the events where the user has selected either interested or going on an event. Initially, I tried to set up the backend API and display both these filters at the same time, but I couldn't join the two filterset fields together. I asked among the slack community and others had achieved adding two filters together with an AND command, but nobody seemed to know how to do an OR command. I consulted my mentor further into the project when I had the frontend up and running and he was also unsure how this could be achieved and suggested I just add an additional filter dropdown to toggle between the two for now. 
 
-* ## Create an Event
+* ## Create a Post
 
 If you are logged in, you are able to share new events with the community. By clicking on the Add Event menu option in the Navigation Bar, you are taken to the Share a New Event page, where you can submit the event creation form to the API.
 
@@ -324,7 +321,7 @@ Each profile also has a follow button inside the stats container so that other u
 
 ### Profile Posts
 
-Below the profile stats you can see all the events posted by the profile you are viewing. Any of these can be clicked on to view the individual event detail page with comments if there are any. 
+Below the profile stats you can see all the posts and adoptionposts posted by the profile you are viewing. Any of these can be clicked on to view the individual post detail page with comments if there are any. 
 
 * ## Contact
 

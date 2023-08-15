@@ -21,9 +21,6 @@ const Adoptionrequest = (props) => {
     } = props;
 
 
-
- 
-
   return (
     <div>
       <hr />
@@ -33,9 +30,13 @@ const Adoptionrequest = (props) => {
         </Link>
         <Media.Body>
           <span><strong>{owner}, {created_at}</strong> </span>
+          <br></br>
           <span>Name: {name}</span>
+          <br></br>
           <span>Phone: {phone}</span>
+          <br></br>
           <span>Email: {email}</span>
+          <br></br>
           <p>{adoptionmessage}</p>
         </Media.Body> 
         
