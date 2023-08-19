@@ -83,7 +83,7 @@ All the models have been set up in a separate DRF repository. Click [here](https
 
 ## Wireframes
 
-The wireframes for the site were created in the software [Balsamiq](https://balsamiq.com). The wireframes have been created principally for desktop devices as this is a browser based platform. However, the wesbite is responsive for tablet and mobile, and I have created additional wireframes to show how the various events pages and profile page adapt to smaller devices. The main grid layout of the components is initially based on the CI Moments walkthrough tutorial as this seems to me the best layout both for wider desktops as for smaller mobile devices for a content sharing platform so I didn't see much reason to change it or find many areas where I could improve on it. Any differences are down to personalised content that fits the project goals.
+The wireframes for the site were created using [Balsamiq](https://balsamiq.com). The wireframes have been created principally for desktop devices as this is a browser based platform. However, the wesbite is responsive for tablet and mobile, and I have created additional wireframes to show how the various events pages and profile page adapt to smaller devices. The main grid layout of the components is initially based on the CI Moments walkthrough tutorial as this seems to me the best layout both for wider desktops as for smaller mobile devices for a content sharing platform so I didn't see much reason to change it or find many areas where I could improve on it. Any differences are down to personalised content that fits the project goals.
 
 <details><summary><b>Wireframes</b></summary>
 
@@ -117,15 +117,12 @@ Happening is split up in two parts: when the user is logged out and when the use
 
 * ### Color Scheme
 
-When deciding on the colour scheme for my site, I looked at other content sharing platforms such as Facebook, Instagram and Eventbrite for inspiration. All of these use a very neutral color scheme with barely any background colour at all, and then just hints of brand color here and there to let the buttons stand out. In order to follow a similar approach, I chose a very neutral background color and then complimentary pink and purple tones for the icons and buttons. 
-
-![Colour Palette](images/color-palette.png)
+When choosing the color scheme I choose  #A43F2D red as the primary color in navbar text and buttons etc and different shades of gray for the other text content. As I find white background nice to the red color and also wanted the post/adoptionposts to melt in well I kept the background color white.
 
 * ### Typography
 
-The main font used for the site is 'Montserrat' with a fallback font of Sans-Serif just in case it doesn't load. This font is nice and clear to read even though the platform in general is not text-heavy. 
+The main font used for the site is 'Lobster' with a fallback font of Sans-Serif just in case it doesn't load. This font is classic and nice and suites the design since the colors are kept simple. As for the text in the forms and posts 'Josefin Sans' with a fallback font of Sans-Serif was chosen since this font is nice and clear to read.
 
-![Typography](images/typography.jpg)
 
 [Back to top](<#table-of-contents>)
 
@@ -139,15 +136,15 @@ On accessing the site for the first time, the user is logged out and the followi
 
 * Bunnyland logo - On the far left hand side of the navigatin bar is the Bunnyland brand logo. This is visible throughout the site to all user types and contains a link back to the homepage. 
 * Home - the first menu item, and the initial default start page, is 'Home', where all posts are displayed. 
-* Adoption - this site displays all adoption posts where users could post rabbits that need new homes
+* Adoption - this site displays all adoption posts where users could wiew posts with rabbits that need new homes
 * Authentication - Signin/Signup for not logged in users and Signout for logged in users 
 
-![Logged out Navbar]()
-![Logged out Navbar Mobile]()
+![Logged out Navbar](images/navbar-signedout.png)
+![Logged out Navbar Mobile](images/navbar-signedout-mobile.png)
 
 Once the user logs in, additional links become available to select:
 
-
+* Adoption - The adoption posts now also display an "Adoption request" button
 * Feed - Logged in users can access the feed page where they can see posts of other profiles they follow.
 * Likes - Logged in users can access all posts they have liked
 * Authentication - Sign out. The icons within the authentication change once a user has logged in, and now displays a link to Sign out.
@@ -155,8 +152,8 @@ Once the user logs in, additional links become available to select:
 * Add Post - Logged in users can access the event creation page to share their own posts to the site. 
 * Add Adoption post - Logged in users can access the adoption post creation page to share their own adoption posts to the site. 
 
-![Logged in Navbar](images/navbar-loggedin.jpg)
-![Logged in Navbar Mobile](images/navbar-loggedin-mobile.jpg)
+![Logged in Navbar](images/navbar-signedin.png)
+![Logged in Navbar Mobile](images/navbar-signedin-mobile.png)
 
 ## Authentication
 
@@ -164,7 +161,7 @@ Users who are new to the site, or haven't previously created an account can clic
 
 ![Sign up](images/signup.jpg)
 
-If a user has a Happening user account, they can click on the Signin menu option in the Navigation Bar to sign into their account.
+If a user has a Bunnyland user account, they can click on the Signin menu option in the Navigation Bar to sign into their account.
 
 ![Sign in](images/signin.jpg)
 
@@ -175,9 +172,8 @@ If the user wishes to sign out, once signed in, the sign out option becomes visi
 There are four main react components which make up the Home events page. 
 
 1. Popular Profiles Component
-2. Events posts
-3. Top Upcoming Events
-4. Search and Filter
+2. Posts
+3. Search and Filter
 
 ### Popular Profiles Component
 
@@ -185,139 +181,118 @@ The popular profiles component is a permanent feature across the entire site. It
 
 If the user isn't logged in, they can see avatar, and the username of the top 6 most popular profiles, and if the user is logged in, they will also see a button enabling them to follow or unfollow the profile. 
 
-![Popular Profiles - logged out](images/popular-profiles-loggedout.jpg)
-![Popular Profiles - logged in](images/popular-profiles-loggedin.jpg)
+![Popular Profiles - logged out](images/most-followed-profiles-signedout.png)
+![Popular Profiles - logged in](images/most-followed-profiles-signedin.png)
+![Popular Profiles - mobile](images/most-followed-profiles-mobile.png)
 
-If the follow button is greyed out, it is because your own profile has made it to the top 6 most popular profiles list, but you are not allowed to follow yourself. Originally, it was simply the case that no button appeared under your own profile but aesthetically, this didn't look good and the component didn't look balanced, so I decided to put an inactive button with a tooltip there instead. 
-
-![Popular Profiles - own profile](images/popular-profiles-followyourself.jpg)
 
 Each profile avatar can be clicked on to view the full profile page of that user. 
 
-### Events Posts
+### Posts
 
-All events that are created through the Happening sharing platform are displayed on the Homepage. All events created are requested from the API and they are ordered by the created date starting with the most recently posted and working backwards. 
+All posts that are created through the Bunnyland sharing platform are displayed on the Homepage. You create a post by clicking the "Add post" button in the navbar and fill in the form. All posts created are requested from the API and they are ordered by the created date starting with the most recently posted and working backwards. 
 
-![Event](images/event.jpg)
+![Posts](images/post.png)
 
-Each event posting displays the user who shared it and the date it was shared. The event poster is in the center, and underneath are the event details. In bold, you can see the event title and the date it's going to take place. Next is a description of the event, and the tags.
+Each post displays the user who shared it and the date it was shared. In bold, you can see the post title and a description.
 
-Each event has three counts shown - A count of people interested in the event, a count of people planning on going to the event, and a count of comments users have posted about this event. 
+Underneath is a heart symbol for likes and the total number of likes (counts). The logged in user could like a post by clicking the heart and the heart then changes color to red. By clicking the heart again you could unlike the post. The post could then be found on the users "Liked" page (which is found in the navbar) so the user could easily find the post there. Next to the likes symbol there is a comments symbol and the total number of likes on the post.
 
-The first two counts work on a toggle system but in addition to this, they are also mutually exclusive. You can click the interested button on and off to make the count go up and down. Equally, you can click the going button on and off to make the count go up and down. However, if you have previoulsy clicked interested, and now you've decided to attend the event, by clicking the going button, the interested count automatically goes down by 1 as the going count goes up by 1. And vice versa. You can't be both interested and going to an event. It must be one or the other. 
+![Likes count](images/post-likes-count.png)
+![Comments count](images/comments-count.png)
+![Liked post](images/liked-post.png)
 
-By clicking on the event image or the comments count, the user is taken to the event details page.
+Under is the category and location. The category could be "help_needed, "tip" or "other".
 
-### Top Upcoming Events
+By clicking on the post image or the comments count, the user is taken to the posts details page.
 
-The third component of the events page is the Top Upcoming Events component. In desktop view, this is shown next to the popular profiles and events, and on tablet and mobile devices, this component moves over into the center and is displayed between the popular profiles and the events. 
 
-This component uses two filters: The first filter comes from the API and orders all site events by going count from highest to lowest. Next, I used a Javascript filter on the frontend results to check the event date, and filter out any events where the event_date field is in the past. There is no point continually promoting fantastic events which have already taken place. Finally, on smaller devices I've taken just the top five results so that it fits better on smaller screens. 
+### Adoption posts
 
-If you click on any of the top events listed, you are taken to the event details page.
+The Adoption site is created the same way as for the posts. All adoption posts that are created through the Bunnyland sharing platform are displayed on the Homepage. You create a post by clicking the "Add adoption post" button in the navbar and fill in the form. All adoption posts created are requested from the API and they are ordered by the created date starting with the most recently posted and working backwards. 
 
-![Popular Events - Desktop](images/popular-events-desktop.jpg)
-![Popular Events - Mobile](images/popular-events-mobile.jpg)
+![Adoption posts](images/adoptionpost.png)
+
+The adoption posts are all the same as the posts with only a fiew differences; 
+
+* Instead of category and location you have breed, location, sex and age in order for the users to more easily select a bunny to adopt. The sex could be female_spayed, female_unspayed, male_neutered, male_unneutered.
+
+* Under the post is an "Adoption request" button, which is only displayed for logged in users. When clicking the button a modal opens with a form to fill in (name, phone, email, message) which is sent to the owner of the adoption request when clickin the submit button.3
+
+![Adoption posts](images/adoptionpost.png)
 
 ### Search and Filter
 
-If the user wants to search for specific events or an event, they have two ways to achieve this:
+ The user can search all the posts listed by post title, username who posted it, category, location or keyword in the content. 
 
-1. All events are assigned a category on creation, and so the events list can be filtered by these categories to show only the events in one category selected by the user from the dropdown options. 
-
-2. Search - The user can search all the events listed by event title, username who posted it, event date, or event tags. This search can be used in conjunction with the category filter or independently, but when the site has a lot of shared events, using both search and filter together makes the overall search facility much more efficient. 
-
-![Events Filter](images/search-filter.jpg)
+![Search filter](images/search.jpg)
 
 * ## Feed
 
-The feed page looks identical to the homepage, only the Events Posts component changes. In this page all the events are requested from the API, but then a filter is used to only show events posted by profiles that the currently logged in user is following. For this reason, this page doesn't work if the user is not logged in. Equally, if the user isn't following any other profiles, no events will be displayed and a 'No Results found' message will appear instead inside the events posts component. 
+The feed page looks identical to the homepage, only the Posts component changes. In this page all the posts are requested from the API, but then a filter is used to only show posts by profiles that the currently logged in user is following. For this reason, this page doesn't work if the user is not logged in. Equally, if the user isn't following any other profiles, no posts will be displayed and a 'No Results found' message will appear instead inside the events posts component. 
 
-![Feed- No Results](images/no-results.jpg)
+![Feed- No Results](images/feed.jpg)
 
-* ## Posts
-
-The My Events page looks identical to the homepage, only the Events Posts component changes. On selecting the My Events menu option in the NavBar, you are shown a dropdown with two additional options. Interested or Going. If you select interested, the events posts component will be filtered to only show the events where the logged in user has clicked the interested button. Alternatively, if the user selects the going option from navbar dropdown, the filter changes to only show events where the logged in user has clicked the going button. 
-
-In the original plan for this project, I wanted the My Events page to be a combination of all the events where the user has selected either interested or going on an event. Initially, I tried to set up the backend API and display both these filters at the same time, but I couldn't join the two filterset fields together. I asked among the slack community and others had achieved adding two filters together with an AND command, but nobody seemed to know how to do an OR command. I consulted my mentor further into the project when I had the frontend up and running and he was also unsure how this could be achieved and suggested I just add an additional filter dropdown to toggle between the two for now. 
 
 * ## Create a Post
 
-If you are logged in, you are able to share new events with the community. By clicking on the Add Event menu option in the Navigation Bar, you are taken to the Share a New Event page, where you can submit the event creation form to the API.
+If you are logged in, you are able to share posts with the community. By clicking on the Add Post menu option in the Navigation Bar, you are taken to the Create post page, where you can submit the event creation form to the API.
 
-All fields are mandatory apart from the event description (which may be understood from the event poster image that is uploaded) and an image must be uploaded for the event to be submitted successfully. Once the form has been submitted successfully, you can see the event published successfully as you are re-directed automatically to the newly created event details page. 
+ Once the form has been submitted successfully, you can see the post published successfully as you are re-directed automatically to the newly created post details page. 
 
-Each time you share a new event with the community, your events count goes up on your profile page for other users to see how active you are as an event host. 
+Each time you share a new post with the community, your posts count goes up on your profile page for other users to see how active you are on the site. 
 
-![Create an Event](images/event-create.jpg)
+![Create Post](images/create-post.jpg)
 
-* ## Event Detail Page
+* ## Post Detail Page
 
-In the event details page, this simply shows everything relating to one single event. You can reach this page by clicking on an event image in any of the events pages or on the event title in the Top Upcoming Events component and Reviews page. It also shows the popular profiles component and the Top Upcoming Events component for continuity across the pages. If you are the owner of the event, from this page you have the option to edit or delete the event by clicking on the three dots that appear next to the event posted date. 
+In the post details page, this simply shows everything relating to one single event. You can reach this page by clicking on an post image on the post. It also shows the popular profiles component for continuity across the pages. If you are the owner of the post, from this page you have the option to edit or delete the event by clicking on the three dots that appear next to the posts posted date. 
 
-If you select Edit, you are taken back to the event creation form, but the fields are already pre-populated with the existing event information. You can edit the desired fields and save the changes, which will return you to the event detail page and you can see that the event has been updated successfully. 
+If you select Edit, you are taken back to the post creation form, but the fields are already pre-populated with the existing event information. You can edit the desired fields and save the changes, which will return you to the post detail page and you can see that the post has been updated successfully. 
 
-![Edit an Event](images/event-edit.jpg)
+![Edit Post](images/edit-post.jpg)
 
-If you select Delete, a pop-up message appears asking you if you are sure you want to delete this event. This defensive design component allows the user to cancel out of the deletion process if the button was pressed in error. If however, the user wishes to proceed with the deletion they can click confirm and the event will be removed from all pages and the user redirected back to the previously visited page. 
+If you select Delete, the post will be removed from all pages and the user redirected back to the previously visited page. 
 
-![Delete an Event](images/event-delete.jpg)
+![Delete Post](images/delete-post.jpg)
 
 Below the event details is the comments section. If there are no comments yet, the user will see a message telling them that there are no comments. 
 
 If the user is not logged in, they can read any comments that have been posted but they can't post a comment themselves unless they log in. 
 
-![Comments - not logged in](images/comments-none.jpg)
+![Comments - not logged in](images/no-comments.jpg)
 
-Any comments that have been posted about this event are displayed, regardless of login status. If the user logs in they will see a comment form above the existing comments where they can post their own comments about the event for other users to read. 
+Any comments that have been posted about this post are displayed, regardless of login status. If the user logs in they will see a comment form above the existing comments where they can post their own comments about the post for other users to read. 
 
 ![Comments](images/comments.jpg)
 
-* ## Reviews
+* ## Create a Adoption post
 
-If the user is logged in, they can access the reviews page. The structure of this page is the same as the other events pages with the popular profiles component, the top upcoming events component and the search events component all still visible. The filter for the events listed however is different. The initial filter in the App.js file (filter={`?ordering=-event_date`}) orders the full list of events retrieved by their event_date in descending order. Once the full list has been called and ordered, a second filter (event_date__lte=${date}) is applied to remove any events where the event_date is less than or equal to today's date.
+If you are logged in, you are able to share adoption posts with the community. By clicking on the Add Post menu option in the Navigation Bar, you are taken to the Create post page, where you can submit the event creation form to the API.
 
-This differentiates the usage between the comments feature and the reviews feature. The comments are intended to be posted while an event is being promoted, prior to it taking place, to gauge the level of enthusiasm for the future event. The reviews are only for past events that have now taken place where people who attended can leave their feedback for others to read. 
+ Once the form has been submitted successfully, you can see the post published successfully as you are re-directed automatically to the newly created event details page. 
 
-When the user first enters the reviews page, each past event is listed with the following information: The profile avatar of the event host, the event title, the event date, the event's average rating score and the review count. This information is displayed in an in-line block on desktop devices and in column format on tablets and mobile. 
 
-![Event Review Summary - desktop](images/review-desktop.jpg)
-![Event Review Summary - mobile](images/review-mobile.jpg)
+![Create Adoption post](images/create-adoptionpost.jpg)
 
-If you hover your mouse over the review count a tooltip tells you that you can click to view the individual opinions which have been left. The review comments component will open and close on a toggle function as you click the review count button. 
-
-![Event Review Comments](images/review-comments.jpg)
-
-Each event has a button prompting the user to post a review. If you are the owner of the event, a tooltip will tell you that you are not allowed to review your own event, and the button remains inactive. Similarly, if you have already posted a review to the selected event, the tooltip will tell you that you have already reviewed the event and will prevent you from posting a second. You can click on the event title to take you to the event details page and see more information about the event. You can also click on the avatars to see the profile page of the user who posted the event, or the profiles of other users who have left reviews.  
-
-If the event is not your own, and you haven't previously submitted a review, you can click the button and access the modal pop up for writing a review. 
-
-![Write a Review](images/review-create.jpg)
-
-The review form has two parts to it. Firstly, it has a five star rating component, which I installed and followed the library documentation from [NPM React Simple Rating](https://www.npmjs.com/package/react-simple-star-rating). Then it has a text input field for users to publish an opinion. The input field is mandatory so you must leave a comment if you want to post a review, but if you leave the star rating blank, it will assume you are leaving a bad review and allocate 0 stars to your published review, and the average rating for the event will be recalculated accordingly. 
-
-If you make a typing error or you wish to change your comments, once the review is published you have the option to edit the comments, or delete the entire review and start again if you want to change the star rating as well. If you want to delete the review, similarly to the event deletion, you will see a popup message asking you to confirm the delete request before it is actually removed from the site. 
-
-![Edit a Review](images/review-edit.jpg)
 
 * ## Profile Page
 
-Throughout the site, wherever you see profile avatars, albeit in the popular profiles component, or next to events, comments or reviews that have been published, you can click on the avatar to view the full profile page of that user. In the Navigation Bar, in the authentication dropdown, you can access your own profile page as well.  
+Throughout the site, wherever you see profile avatars, albeit in the popular profiles component, or next to posts/adoption posts, comments that have been published, you can click on the avatar to view the full profile page of that user. In the Navigation Bar, in the authentication dropdown, you can access your own profile page as well.  
 
 ### Profile Stats
 
 When a user signs up and creates a new site account, a basic profile is automatically created with a username, password and defauly avatar image. The only information that subsequently gets updated in the profile page is the site usage stats, as follows: 
 
-* Number of events the user has posted
-* Number of events the user has flagged as going
+* Number of posts the user has posted
 * Number of profiles they are following
 * Number of profiles that are following them
 
-There is an about container and a contact details container which remain empty until the user goes into their own profile page and clicks on the three dots dropdown to Edit the profile and add their personal details to the page. If they click on the Edit Profile option, they are taken to a new page containing the full profile details form to fill in and submit. Here, they can add their own avatar image, a name, bio, website address, instagram or facebook link, a telephone number and an email address. These are designed mainly to give event hosts the opportunity to publish additional contact information and social media links but of course all users are welcome to add as much or little personal info as they wish. 
+There is an about container and a contact details container which remain empty until the user goes into their own profile page and clicks on the three dots dropdown to Edit the profile and add their personal details to the page. If they click on the Edit Profile option, they are taken to a new page containing the full profile details form to fill in and submit. Here, they can add their own avatar image, a name, bio. These are designed mainly to give posts hosts the opportunity to publish additional information but of course all users are welcome to add as much or little personal info as they wish. 
 
 ![Profile Edit](images/profile-edit.jpg)
 
-Once these fields have been filled in, they can be seen by other users in the main profile page stats container. Any website links that are entered can be clicked on to open the website in a new browser tab. 
+Once these fields have been filled in, they can be seen by other users in the main profile page stats container. 
 
 Each profile also has a follow button inside the stats container so that other users can click it to follow and unfollow the profile as all profiles won't always appear listed in the popular profiles component, to access the follow functionality there. 
 
@@ -327,9 +302,9 @@ Each profile also has a follow button inside the stats container so that other u
 
 Below the profile stats you can see all the posts and adoptionposts posted by the profile you are viewing. Any of these can be clicked on to view the individual post detail page with comments if there are any. 
 
-* ## Contact
+* ## Messages
 
-At the top of the profile page, the user can still see the popular profiles component as a permanent feature across the site, but the top upcoming events component has been replaced by a messaging system component. On desktop devices the message component is visible on the right of popular profiles, but for tablet and mobile it moves into place between the popular profiles and the User Profile Stats. 
+At the top right side of the Profile page there is a messaging system component. On desktop devices the message component is visible on the right of popular profiles, but for tablet and mobile it moves into place between the popular profiles and the User Profile Stats. 
 
 If you are viewing someone else's profile, the message component contains a form to write a message and send it to the owner of the profile page you are viewing. 
 
@@ -356,44 +331,20 @@ For the time being, there is no alert system in place to send a notification to 
 
 Based on the Moments walkthrough project 'MoreDropdown' component, I have utilised the same idea in my project but extended it's use even further to be accessed when editing or deleting events, comments and also reviews. In addition to this re-usable component which I learnt from the course tutorials, I also developed four more custom re-usable components specifically for my project.
 
-### Delete Confirmation Component
 
-In order to improve defensive design, I wanted to add a validation check before data gets deleted from the site. For this reason, I have developed a modal pop-up component which double checks whether the user wants to continue with their choice, after having clicked the delete button from the EditDeleteDropdown component on an event, a comment or a review. This component checks what type of data the user is trying to delete, and customises the modal message appropriately. On clicking the 'Confirm Deletion' button the corresponding handleDelete function is called, and the data is removed from the site
 
-![Delete Event](images/delete-event.jpg)
-![Delete Comment](images/delete-comment.jpg)
-![Delete Review](images/delete-review.jpg)
 
-### Date Formatter Component
-
-Originally, I tried to format the event event_date field on the backend, but it caused all sorts of error messages and I couldn't quite get it to work correctly. Having consulted tutor support, they told me that it was also possible to leave the date format on the backend and just format it where necessary on the frontend. There are three areas in this site where event_date is published; in the event posting, in the top upcoming events component, and in the review listings. 
-
-When I tried requesting the event_date from the API in a formatted form, it came through OK, similar to how the created_at date is formatted in the backend, but then when it came to pre-populating it back into an edit form, it wouldn't go back correctly into the date field. I therefore decided to leave the date format for all the API requests in it's original format, and just created a re-usable function - 'DateFormatter.js' to make it appear nicely for the front end user to view. 
-
-![Date Unformatted](images/date-before.jpg)
-![Date Formatted](images/date-after.jpg)
 
 ### Alert Component
 
-As stated previously, there is no way for the user to check whether the message form has been submitted correctly or not, as the user doesn't have access to other user's inbox. I therefore wanted to set up a bootstrap success alert. Initially I created this as a single function inside the MessageCreateForm.js component. In a later sprint, when I was developing the reply feature, I decided to create a re-usable Alert component which could be used interchangeably between the send message and reply message forms. I refactored the code inside the MessageCreateForm component and imported the newly created AlertMessage component into the ReplyMessageForm.js component as well. In future development, I can extend this functionality to show user alerts in more areas of the site. 
+As stated previously, there is no way for the user to check whether the message form has been submitted correctly or not, as the user doesn't have access to other user's inbox. I therefore wanted to set up a bootstrap success alert. Initially I created this as a single function inside the MessageCreateForm.js component. In a later sprint, when I was developing the reply feature, I decided to create a re-usable Alert component which could be used interchangeably between the send message and reply message forms. I refactored the code inside the MessageCreateForm component and imported the newly created AlertMessage component into the ReplyMessageForm.js component as well. 
 
-### Scroll to Top Component
 
-With the infinite scroll functionality in place, once there are a lot of events posted to the site, and the user scrolls a long way down looking at posts, once they want to return to the navbar options, it takes a long time to manually scroll all the way back up again, harming user experience.  For this reason, I have implemented a button which appears once the user has scrolled down more than 1000px ( appears after viewing the first post) and remains fixed to the bottom of the screen for when the user wants to return to the navbar menu at the top. 
-
-Initially I implemented a simple button at the bottom of the events pages screen which takes the user back to the top of the window. However, in this scenario the user has to scroll through all events to reach the button. Looking at an article from [W3Schools](https://www.w3schools.com/howto/howto_js_scroll_to_top.asp) I added CSS to fix the button to the bottom of the page, and a function to keep the button hidden until the user has scrolled down more than 1000px. I moved this function into a re-usable hook component, which I then imported into the Profile Page and the Reviews page as well. 
-
-![Back to the Top Button](images/scroll-button.jpg)
-
-[Back to top](<#table-of-contents>)
 
 # **Features Left to Implement**
 
-* Add a notification system in to alert users when they receive a new message
-* Differentiate between types of users - event hosts and event attendees -  set up profiles pages accordingly
-* Turn this into a mobile app
-* Get users from my town signed up and using the site to generate data, and get real user feedback for future sprints
-* Set alerts for when events in your MyEvents page are about to take place
+* Add a notification system in to alert users when they receive a new message or Adoption request
+* Add a reply mecanism to the Adoption request function so the user sending the request could get a yes or no on their request
 
 [Back to top](<#table-of-contents>)
 
@@ -422,11 +373,6 @@ Initially I implemented a simple button at the bottom of the events pages screen
 * [CSS Validation](https://jigsaw.w3.org/css-validator/) - Used to validate CSS code
 * [JSHint Validation](https://jshint.com/) - Used to validate JavaScript code
 
-## Libraries
-
-* [NPM React-star-rating](https://www.npmjs.com/package/react-simple-star-rating) - A simple react component for adding a star rating to your project.
-
-[Back to top](<#table-of-contents>)
 
 # Testing
 
@@ -456,44 +402,18 @@ Once you have set up the workspace and done a basic deploy to Heroku, you can co
 4. Go back into your frontend Gitpod workspace, and install the Axios library using the command 'npm install axios'.
 5. Create a folder called 'API' and inside it create a file called 'axiosDefaults'.
 6. import axios at the top of the file
-7. Define your baseURL which is the unique URL of your deployed API project. In my case this would be [https://happening-api-kelz.herokuapp.com/](https://happening-api-kelz.herokuapp.com/)
+7. Define your baseURL which is the unique URL of your deployed API project. In my case this would be [https://bunnyland-drf.herokuapp.com/](https://bunnyland-drf.herokuapp.com/)
 8. Set the content-type header to multi-part/form-data as the API will need to deal with images as well as text in it's requests.
 9. In order to avoid any CORS issues, set withCredentials to True.
 10. Import this file into App.js to be used across all pages
 
-### Fork this Project Repository
 
-It is possible to make an independent copy of a GitHub Repository by forking the GitHub account. The copy can then be viewed and it is also possible to make changes in the copy without affecting the original repository. To fork the repository, follow these steps:
-
-1. After logging in to GitHub, locate the repository. On the top right side of the page there is a 'Fork' button. Click on the button to create a copy of the original repository.
-
-### Clone this Project Repository
-
-A Git clone creates a linked copy of the project that will continue to synchronize with the original repository. In order to create a clone, you can click on the 'Code' button inside the selected repository and then select the 'Clone' option from the dropdown list.
-
-![Clone](images/clone.jpg)
-
-[Back to top](<#table-of-contents>)
 
 # Credits
 
-* The image on the sign in and sign up page was taken from [Unsplash.com](https://unsplash.com/photos/ekvNI_03FLM)
-* The Upload image on the create event, and edit event and profile page is taken from [pngtree.com](https://pngtree.com/so/uploading)
-* The No Results found image is taken from [hajde/media](https://hajde.media/forum/60)
-* I used [freelogodesign.org](https://www.freelogodesign.org/manager) to design the Happening brand logo
-* I used [fotor.com](https://www.fotor.com/features/background-remover/upload) to make the image background transparent on the logo
-* I was passed this [article](https://christopher-dent.medium.com/adding-a-delete-confirmation-to-your-react-app-55221701daa6) by tutor support, in order to help me learn how to create a delete confirmation modal component.
-* Once I had the modal component functioning correctly, in order to refactor it into a re-usable component, I found this helpful [article](https://codemoto.io/coding/react/react-delete-confirmation-modal) to make the necessary changes.
-* I read this article on [Stack Overflow](https://stackoverflow.com/questions/53772417/react-how-to-filter-events-according-to-date) which helped me to create the date filter for the top upcoming events component
-* I then found another article on [Stack Overflow](https://stackoverflow.com/questions/19097631/missing-invoking-a-constructor) to fix the console warning about component brackets.
-* I used [reactgo.com](https://reactgo.com/react-get-current-date/) to learn how to make a variable for today's date
-* I looked at my Mentor, Gareth McGirr's [P5 Project](https://github.com/Gareth-McGirr/body-doodles) to help me get an understanding of how to implement the React-simple-star-rating package. 
-* I read this documentation on the [Star Rating System](https://www.npmjs.com/package/react-simple-star-rating) to help with the install and use of the external component
-* I read an article by [gitconnected.com](https://levelup.gitconnected.com/how-to-create-a-scroll-to-top-button-in-reactjs-7b2f2563d6b0) to help me create a scroll to the top button
-* I read an article by [W3schools.com](https://www.w3schools.com/howto/howto_js_scroll_to_top.asp) which helped mt to turn the scroll to top element into a re-usable component
 
 # Acknowledgements
-This fictional site was created for Portfolio Project #5 (Advanced Front End Specialisation) - Diploma in Full Stack Software Development at the [Code Institute](https://www.codeinstitute.net). I would like to thank my mentor Gareth McGirr for his support and feedback during the project. I would also like to thank everyone in my Slack class for their support, and on all the slack channels for answering my questions and concerns during this project and throughout the course. 
+This site was created for Portfolio Project #5 (Advanced Front End Specialisation) - Diploma in Full Stack Software Development at the [Code Institute](https://www.codeinstitute.net). I would like to thank my mentor Antonio Rodriques for all help during this project as well as during the whole course.
 
 
 
