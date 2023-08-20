@@ -6,7 +6,7 @@ This fictional site was created for Portfolio Project #5 (Advanced Front End) - 
 
 [View live website here](https://bunnyland.herokuapp.com/)
 
-![Responsive design](images/mockup.jpg)
+![Responsive design](images/bunnyland.png)
 
 ## Table of Contents
 
@@ -266,9 +266,9 @@ Any comments that have been posted about this post are displayed, regardless of 
 
 ![Comments](images/comments.jpg)
 
-* ## Create a Adoption post
+* ## Create an Adoption post
 
-If you are logged in, you are able to share adoption posts with the community. By clicking on the Add Post menu option in the Navigation Bar, you are taken to the Create post page, where you can submit the event creation form to the API.
+If you are logged in, you are able to share adoption posts with the community. By clicking on the Add Adoption post menu option in the Navigation Bar, you are taken to the Create post page, where you can submit the event creation form to the API.
 
  Once the form has been submitted successfully, you can see the post published successfully as you are re-directed automatically to the newly created event details page. 
 
@@ -285,8 +285,11 @@ Throughout the site, wherever you see profile avatars, albeit in the popular pro
 When a user signs up and creates a new site account, a basic profile is automatically created with a username, password and defauly avatar image. The only information that subsequently gets updated in the profile page is the site usage stats, as follows: 
 
 * Number of posts the user has posted
+* Number of adoption posts the user has posted
 * Number of profiles they are following
 * Number of profiles that are following them
+
+![Profile Page](images/profilepage.jpg)
 
 There is an about container and a contact details container which remain empty until the user goes into their own profile page and clicks on the three dots dropdown to Edit the profile and add their personal details to the page. If they click on the Edit Profile option, they are taken to a new page containing the full profile details form to fill in and submit. Here, they can add their own avatar image, a name, bio. These are designed mainly to give posts hosts the opportunity to publish additional information but of course all users are welcome to add as much or little personal info as they wish. 
 
@@ -296,7 +299,7 @@ Once these fields have been filled in, they can be seen by other users in the ma
 
 Each profile also has a follow button inside the stats container so that other users can click it to follow and unfollow the profile as all profiles won't always appear listed in the popular profiles component, to access the follow functionality there. 
 
-![Profile Stats](images/profile-stats.jpg)
+![Profile Stats](images/profile-follow.jpg)
 
 ### Profile Posts
 
@@ -308,30 +311,51 @@ At the top right side of the Profile page there is a messaging system component.
 
 If you are viewing someone else's profile, the message component contains a form to write a message and send it to the owner of the profile page you are viewing. 
 
-![Create Message](images/message-create.jpg)
+![Create Message](images/profile-send-message.jpg)
 
 If you are viewing your own profile page the messaging component will display your own private message inbox. Other users will not be able to see the messages that have not been sent to them. All messages that have been sent to you, are displayed in descending order of when they were sent. You can see the avatar and the username of the sender, the date the message was sent, and the message itself. Each message has a 'reply' button if the user wants to send a reply message back to the sender. 
 
-![Received Messages](images/message-inbox.jpg)
-![Messages - Reply](images/message-reply.jpg)
+![Received Messages](images/messages-list.jpg)
+![Messages - Reply](images/message-replyforms.jpg)
 
 Unlike with other forms such as creating an event, comment or review, where you can see the published content once the form has been posted successfully, the user does not have access to other user's inboxes to check whether the message has been sent successfully or not. For this reason, in the case of the messaging component, I have set up an alert system using Bootstrap alerts, to display a success alert message when a message or a reply message have been sent successfully. This adds to good user experience, and user peace of mind. 
 
-![Message Alert](images/message-alert.jpg)
+![Message Success message](images/message-success.jpg)
 
 Equally, if the user tries to send a blank message, they will see a Bootstrap warning message telling them that they must fill in the message field in order to send the message successfully. 
 
-![Message Alert](images/message-error.jpg)
+![Message Alert](images/message-blank)
 
 For the time being, there is no alert system in place to send a notification to a user when they receive a new message, but this is something I would like to look into in future development sprints.
+
+* ## Adoption request
+
+At the end of all adoption posts, there is an "Adoption request button". When clicked a modal opens with a form where you can add contact details (name, phone, email, message).
+
+![Adoption request form](images/adoptionrequest-form.png)
+
+
+The adoption request then appears on the Profile page of the Adoption request owner. At the top right side of the Profile page under the Messages there is an Adoption request system component. On desktop devices the Adoption request component is visible on the right of popular profiles (under messages), but for tablet and mobile it moves into place between the popular profiles and the User Profile Stats. 
+
+If you are viewing someone else's profile, no Adoption request field is visable. If you are viewing your own profile page the Adoption request component will display your own private Adoption request inbox. Other users will not be able to see the Adoption requests that have not been sent to them. All Adoption requests that have been sent to you, are displayed in descending order of when they were sent. You can see the avatar and the username of the sender, the date the message was sent, name, phone, email and a message. 
+
+![Adoption request list](images/adoptionrequest-list.png)
+
+Unlike with other forms such as creating a post, adoption post or comment, where you can see the published content once the form has been posted successfully, the user does not have access to other user's inboxes to check whether the adoption request has been sent successfully or not. For this reason, in the case of the messaging component, I have set up an alert system using Bootstrap alerts, to display a success alert message when a message or a reply message have been sent successfully. This adds to good user experience, and user peace of mind. 
+
+![Adoption request Success message](images/adoptionrequest-success.jpg)
+
+Equally, if the user tries to send a blank message, they will see a Bootstrap warning message telling them that they must fill in the fields in order to send the request successfully. 
+
+![Message Alert](images/adoptionrequest-alert)
+
+For the time being, there is no alert system in place to send a notification to a user when they receive a new adoption request, but this is something I would like to look into in future development sprints.
 
 * ## Reusable React Components
 
 ### Three Dots Edit Delete Dropdown Menu
 
 Based on the Moments walkthrough project 'MoreDropdown' component, I have utilised the same idea in my project but extended it's use even further to be accessed when editing or deleting events, comments and also reviews. In addition to this re-usable component which I learnt from the course tutorials, I also developed four more custom re-usable components specifically for my project.
-
-
 
 
 
@@ -397,7 +421,7 @@ Once you have created a new gitpod workspace and set up the new project, you are
 Once you have set up the workspace and done a basic deploy to Heroku, you can connect the react workspace to your API, in order to send data to the API
 
 1. In the Heroku dashboard, go into the API application settings
-2. In 'Settings' add a new Config Var called 'CLIENT_ORIGIN' and set that to the URL for your deployed React application. In my case, this would be [https://happening-react.herokuapp.com](https://happening-react.herokuapp.com).
+2. In 'Settings' add a new Config Var called 'CLIENT_ORIGIN' and set that to the URL for your deployed React application. In my case, this would be [https://bunnyland.herokuapp.com](https://bunnyland.herokuapp.com).
 3. Then add another Config Var called 'CLIENT_ORIGIN_DEV' and enter the URL of your Gitpod preview link, remembering to remove the trailing slash at the end. Gitpod occasionally changes this URL so keep an eye on it, as you are working on your project. 
 4. Go back into your frontend Gitpod workspace, and install the Axios library using the command 'npm install axios'.
 5. Create a folder called 'API' and inside it create a file called 'axiosDefaults'.
@@ -413,7 +437,7 @@ Once you have set up the workspace and done a basic deploy to Heroku, you can co
 
 
 # Acknowledgements
-This site was created for Portfolio Project #5 (Advanced Front End Specialisation) - Diploma in Full Stack Software Development at the [Code Institute](https://www.codeinstitute.net). I would like to thank my mentor Antonio Rodriques for all help during this project as well as during the whole course.
+This site was created for Portfolio Project #5 (Advanced Front End Specialisation) - Diploma in Full Stack Software Development at the [Code Institute](https://www.codeinstitute.net). I would like to give a huge thanks to my mentor Antonio Rodriques for all help during this project as well as during all five course projects.
 
 
 
