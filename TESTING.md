@@ -10,7 +10,7 @@
     * [Manual Testing](<#manual-testing>)
     * [Responsiveness Testing](<#responsiveness-testing>)
     * [Lighthouse Testing](<#lighthouse-testing>)
-    * [Known Bugs](<#known-bugs>)
+    * [Bugs](<#bugs>)
 
 ## Code Validation 
 
@@ -43,25 +43,27 @@ The following Jest automatic tests have been written to check that the main fron
 |  | | |
 |:-------:|:--------|:--------|
 | Renders Navbar Home link| &check; |
-| Renders link to the feed page for a logged in user | &check; |
-| Renders link to the liked page for a logged in user | &check; |
+| Renders link to the Adoption page for a logged in user| &check; |
+| Renders link to the Feed page for a logged in user | &check; |
+| Renders link to the Liked page for a logged in user | &check; |
 
 
 ### NotFound.js
 |  | | |
 |:-------:|:--------|:--------|
-| Go Back to homepage link renders | &check; |
+| Displays the "Not Found" message| &check; |
+| Renders the "No Results" image| &check; |
 
 ### Avatar.js
 |  | | |
 |:-------:|:--------|:--------|
 | Avatar renders | &check; |
 
-### Event.js
+### MoreDropDown.js
 |  | | |
 |:-------:|:--------|:--------|
-| Renders post component | &check; |
-| Post owner avatar renders | &check; |
+| MoreDropdown component | &check; |
+
 
 ## Manual Testing
 
@@ -214,6 +216,15 @@ As well as the automatic tests, I carried out the following additional manual te
 | &check; | Users can change an uploaded image
 | &check; | Users can't submit the form without an image - warning message displayed
 | &check; | Users can't submit the form without filling out the title  - warning message displayed
+
+
+| Status | **Adoption request - User Logged In**
+|:-------:|:--------|
+| &check; | Users can view the "Adoption request" button in all Adoption Posts
+| &check; | When clicking the button, a modal with the Form opens
+| &check; | Upon successfull sent, a success message appears
+| &check; | If all fields are not filled in, a waring messafge appears 
+| &check; | Upon succesfull sent message, the Adoption post owner can read the adoption request on their Profile page
 
 
 | Status | **Feed - User Logged In**

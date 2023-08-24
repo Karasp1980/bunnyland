@@ -39,7 +39,7 @@ test("renders NavBar", () => {
     expect(signInLink).toBeInTheDocument();
   });
 
-  test('renders link to the Adoption page for a logged in user', async () => {
+  test('renders link to the Feed page for a logged in user', async () => {
     render(
         <Router>
             <CurrentUserProvider>
@@ -52,7 +52,7 @@ test("renders NavBar", () => {
     expect(feed).toBeInTheDocument()
 });
 
-test('renders link to the Adoption page for a logged in user', async () => {
+test('renders link to the Liked page for a logged in user', async () => {
     render(
         <Router>
             <CurrentUserProvider>
