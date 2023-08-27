@@ -20,7 +20,7 @@ import PopularProfiles from "../profiles/PopularProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function AdoptionpostsPage({ message, filter = "" }) {
-  const [adoption, setPosts] = useState({ results: [] });
+  const [adoption, setAdoptionposts] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
 
@@ -31,7 +31,7 @@ function AdoptionpostsPage({ message, filter = "" }) {
     const fetchPosts = async () => {
       try {
         const { data } = await axiosReq.get(`/adoption/?${filter}search=${query}`);
-        setPosts(data);
+        setAdoptionposts(data);
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -72,12 +72,12 @@ function AdoptionpostsPage({ message, filter = "" }) {
             {adoption.results.length ? (
               <InfiniteScroll
                 children={adoption.results.map((adoption) => (
-                  <Adoptionpost key={adoption.id} {...adoption} setPosts={setPosts} />
+                  <Adoptionpost key={adoption.id} {...adoption} setAdoptionposts={setAdoptionposts} />
                 ))}
                 dataLength={adoption.results.length}
                 loader={<Asset spinner />}
                 hasMore={!!adoption.next}
-                next={() => fetchMoreData(adoption, setPosts)}
+                next={() => fetchMoreData(adoption, setAdoptionposts)}
               />
             ) : (
               <Container className={appStyles.Content}>

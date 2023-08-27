@@ -19,7 +19,7 @@ import { fetchMoreData } from "../../utils/utils";
 
 function AdoptionpostPage() {
   const { id } = useParams();
-  const [adoption, setPost] = useState({ results: [] });
+  const [adoption, setAdoptionpost] = useState({ results: [] });
 
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
@@ -32,7 +32,7 @@ function AdoptionpostPage() {
           axiosReq.get(`/adoption/${id}`),
           axiosReq.get(`/adoptioncomments/?adoption=${id}`),
         ]);
-        setPost({ results: [adoption] });
+        setAdoptionpost({ results: [adoption] });
         setComments(adoptioncomments);
       } catch (err) {
         console.log(err);
@@ -48,14 +48,14 @@ function AdoptionpostPage() {
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
        
-        <Adoptionpost {...adoption.results[0]} setPosts={setPost} adoptionpostPage />
+        <Adoptionpost {...adoption.results[0]} setAdoptionposts={setAdoptionpost} adoptionpostPage />
         <Container className={appStyles.Content}>
           {currentUser ? (
             <AdoptioncommentCreateForm
               profile_id={currentUser.profile_id}
               profileImage={profile_image}
               adoption={id}
-              setPost={setPost}
+              setAdoptionpost={setAdoptionpost}
               setComments={setComments}
             />
           ) : adoptioncomments.results.length ? (
@@ -67,7 +67,7 @@ function AdoptionpostPage() {
                 <Adoptioncomment
                   key={adoptioncomment.id}
                   {...adoptioncomment}
-                  setPost={setPost}
+                  setAdoptionpost={setAdoptionpost}
                   setComments={setComments}
                 />
               ))}
@@ -90,5 +90,7 @@ function AdoptionpostPage() {
   );
 }
 
-
 export default AdoptionpostPage;
+
+
+

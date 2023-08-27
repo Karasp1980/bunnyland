@@ -16,7 +16,6 @@ import Alert from 'react-bootstrap/Alert';
 import AlertMessage from '../../components/AlertMessage';
 
 
-
 const Adoptionpost = (props) => {
   const {
     id,
@@ -36,8 +35,7 @@ const Adoptionpost = (props) => {
     location,
     sex,
     age,
-    sendToProfile, 
-    
+    sendToProfile,     
     mobile,
     
   } = props;
@@ -325,6 +323,7 @@ const Adoptionpost = (props) => {
 }
 
 export default Adoptionpost;  
+
  
 
 
