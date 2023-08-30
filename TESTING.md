@@ -28,11 +28,6 @@ No errors or warnings were found when the deployed Happening URL was passed thro
 
 ![W3C CSS Validation](images/Jigsaw.png)
 
-### ESLint Validation Results
-
-After resolving the errors caused where files, by default, had react imported but not used, only 9 errors regarding the testing files, so I have left these, and subsequently uninstalled ES Lint as it was causing conflicts with the dependency tree. 
-
-![ES Lint](images/eslint-results.png)
 
 
 ## Automatic Testing
@@ -293,21 +288,18 @@ During the testing process I also used the [Responsive Design Checker](https://u
 
 ### Browser Compatibility 
 
-Happening was tested on the following browsers:
+Bunnyland was tested on the following browsers:
 
 - Google Chrome
 - Microsoft Edge
 - Mozilla Firefox
 
-I do not have any Apple devices available to carry out testing on a Safari browser. Appearance and functionality appear to be consistent throughout all browsers. The site loads correctly on Firefox but it doesn't seem to be able to connect with the backend API and get the data. This is something I need to look at for the future to make sure that Firefox users can view my site.
 
 ## Lighthouse Testing
 
 Google Lighthouse in Chrome Developer Tools was used to test the application within the areas of *Performance*, *Accessibility*, *Best Practices* and *SEO*. The testing showed the following:
 
-* Home Page - Performance: 70, Accessibility: 95, Best Practises: 83, SEO: 100
-
-![Lighthouse Homepage Result](images/lighthouse-homepage.jpg)
+![Lighthouse Homepage Result](images/lighthouse.jpg)
 
 ### Peer Review
 

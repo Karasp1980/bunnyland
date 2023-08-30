@@ -29,9 +29,9 @@ This fictional site was created for Portfolio Project #5 (Advanced Front End) - 
   * [Adoption](#adoption)
   * [Feed](#feed)
   * [Create a Post](#create-a-post)
-  * [Create an Acoptionpost](#create-an-adoptionpost)
   * [Post Detail Page](#post-detail-page)
-  * [Acoptionpost Detail Page](#adoptionpost-detail-page)
+  * [Create an Adoptionpost](#create-an-adoptionpost)
+  * [Adoptionpost Detail Page](#adoptionpost-detail-page)
   * [Profile Page](#profile-page)
   * [Reusable React Components](#reusable-react-components)
 
@@ -73,7 +73,7 @@ I've been using the project board in GitHub to keep my project together. In the 
 
 ### Database Schema
 
-All the models have been set up in a separate DRF repository. Click [here](https://github.com/Karasp1980/drf-backend) to view the repository or [here](bunnyland-drf.herokuapp.com) to view the deployed API. The database schema can be seen here:
+All the models have been set up in a separate DRF repository. Click [here](https://github.com/Karasp1980/drf-backend) to view the repository or [here](bunnyland-drf.herokuapp.com) to view the deployed API. The database schema was created using dbdiagram [here](dbdiagram.io) and can be seen here:
 [Database schema]((images/databaseschema.png))
 
  
@@ -223,7 +223,7 @@ The adoption posts are all the same as the posts with only a fiew differences;
 
 ### Search and Filter
 
- The user can search all the posts listed by post title, username who posted it, category, location or keyword in the content. 
+ The user can search all the posts listed by post title, username who posted it, category, location or keyword in the content. The filter category could also be used for Posts (not adoption posts) to filter posts by category: Tip, Help needed, Other
 
 ![Search filter](images/search.jpg)
 
@@ -246,7 +246,7 @@ Each time you share a new post with the community, your posts count goes up on y
 
 * ## Post Detail Page
 
-In the post details page, this simply shows everything relating to one single event. You can reach this page by clicking on an post image on the post. It also shows the popular profiles component for continuity across the pages. If you are the owner of the post, from this page you have the option to edit or delete the event by clicking on the three dots that appear next to the posts posted date. 
+In the post details page, this simply shows everything relating to one single post. You can reach this page by clicking on an post image on the post. It also shows the popular profiles component for continuity across the pages. If you are the owner of the post, from this page you have the option to edit or delete the event by clicking on the three dots that appear next to the posts posted date. 
 
 If you select Edit, you are taken back to the post creation form, but the fields are already pre-populated with the existing event information. You can edit the desired fields and save the changes, which will return you to the post detail page and you can see that the post has been updated successfully. 
 
@@ -256,7 +256,7 @@ If you select Delete, the post will be removed from all pages and the user redir
 
 ![Delete Post](images/delete-post.jpg)
 
-Below the event details is the comments section. If there are no comments yet, the user will see a message telling them that there are no comments. 
+Below the Posts details is the comments section. If there are no comments yet, the user will see a message telling them that there are no comments. 
 
 If the user is not logged in, they can read any comments that have been posted but they can't post a comment themselves unless they log in. 
 
@@ -268,12 +268,28 @@ Any comments that have been posted about this post are displayed, regardless of 
 
 * ## Create an Adoption post
 
-If you are logged in, you are able to share adoption posts with the community. By clicking on the Add Adoption post menu option in the Navigation Bar, you are taken to the Create post page, where you can submit the event creation form to the API.
+If you are logged in, you are able to share Adoption posts with the community. By clicking on the Add Adoption post menu option in the Navigation Bar, you are taken to the Create Adoptionpost page, where you can submit the event creation form to the API.
 
  Once the form has been submitted successfully, you can see the post published successfully as you are re-directed automatically to the newly created event details page. 
 
 
 ![Create Adoption post](images/create-adoptionpost.jpg)
+
+* ## Adoptinpost Detail Page
+
+In the Adoptionpost details page, this simply shows everything relating to one single post. You can reach this page by clicking on an adoptionpost image on the adoptoinpost. It also shows the popular profiles component for continuity across the pages. If you are the owner of the adoptionpost, from this page you have the option to edit or delete the event by clicking on the three dots that appear next to the posts posted date. 
+
+If you select Edit, you are taken back to the post creation form, but the fields are already pre-populated with the existing event information. You can edit the desired fields and save the changes, which will return you to the post detail page and you can see that the post has been updated successfully. 
+
+![Edit Adoptionpost](images/edit-adoptionpost.jpg)
+
+If you select Delete, the post will be removed from all pages and the user redirected back to the previously visited page just like on the Post Edit page.
+
+Below the Adoptionpost details is the comments section working in the same way as on the Post details page. If there are no comments yet, the user will see a message telling them that there are no comments. 
+
+If the user is not logged in, they can read any comments that have been posted but they can't post a comment themselves unless they log in. 
+Any comments that have been posted about this post are displayed, regardless of login status. If the user logs in they will see a comment form above the existing comments where they can post their own comments about the post for other users to read. 
+
 
 
 * ## Profile Page
@@ -303,9 +319,9 @@ Each profile also has a follow button inside the stats container so that other u
 
 ### Profile Posts
 
-Below the profile stats you can see all the posts and adoptionposts posted by the profile you are viewing. Any of these can be clicked on to view the individual post detail page with comments if there are any. 
+Below the profile stats you can see all the posts and adoptionposts posted by the profile you are viewing. Any of these can be clicked on to view the individual post detail page with comments if there are any. First all posts are displayed (in disending date order), and then all adoption posts (in disending date order). My plan is to improve this in the future to display the posts and adoption posts together (just sorted in disending date order) to make it easier for the users to find the post. This is somethin I am aware of and want to improve but leave for now due to time management.
 
-* ## Messages
+### Messages
 
 At the top right side of the Profile page there is a messaging system component. On desktop devices the message component is visible on the right of popular profiles, but for tablet and mobile it moves into place between the popular profiles and the User Profile Stats. 
 
@@ -328,7 +344,7 @@ Equally, if the user tries to send a blank message, they will see a Bootstrap wa
 
 For the time being, there is no alert system in place to send a notification to a user when they receive a new message, but this is something I would like to look into in future development sprints.
 
-* ## Adoption request
+### Adoption request
 
 At the end of all adoption posts, there is an "Adoption request button". When clicked a modal opens with a form where you can add contact details (name, phone, email, message).
 
@@ -369,6 +385,8 @@ As stated previously, there is no way for the user to check whether the message 
 
 * Add a notification system in to alert users when they receive a new message or Adoption request
 * Add a reply mecanism to the Adoption request function so the user sending the request could get a yes or no on their request
+* On the profile pages, get the posts and adoptionposts rendered together and in date order, now all posts are displayed first and then adoption posts
+* Get the search filter by category on the PostsPage to filter directly in the component in the frontend, instead of category in the filterset_fields in the backend-api as now in order to not needing to call the api each time.
 
 [Back to top](<#table-of-contents>)
 
@@ -465,6 +483,7 @@ This site was created for Portfolio Project #5 (Advanced Front End Specialisatio
 * [https://www.istockphoto.com/se](https://www.istockphoto.com/se)
 * [https://www.flaticon.com](https://www.flaticon.com)
 * [https://www.hepper.com](https://www.hepper.com/diy-rabbit-litter-box/)
+* [https://xn--svenskateddysllskapet-i2b.weebly.com/]( https://xn--svenskateddysllskapet-i2b.weebly.com/)
 
 
 

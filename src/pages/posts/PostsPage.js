@@ -24,13 +24,15 @@ function PostsPage({ message, filter = "" }) {
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
 
-  const [query, setQuery] = useState("");
+ 
   const currentUser = useCurrentUser();
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("");
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const { data } = await axiosReq.get(`/posts/?${filter}search=${query}`);
+        const { data } = await axiosReq.get(`/posts/?${filter}search=${search}&category=${category}`);
         setPosts(data);
         setHasLoaded(true);
       } catch (err) {
@@ -46,25 +48,45 @@ function PostsPage({ message, filter = "" }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, query, pathname, currentUser]);
+  }, [filter, search, pathname, currentUser, category]);
 
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <PopularProfiles mobile />
-        <i className={`fas fa-search ${styles.SearchIcon}`} />
-        <Form
-          className={styles.SearchBar}
-          onSubmit={(event) => event.preventDefault()}
-        >
-          <Form.Control
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            type="text"
-            className="mr-sm-2"
-            placeholder="Search posts"
-          />
-        </Form>
+        
+        <Container>
+            <i className={`fas fa-search ${styles.SearchIcon}`} />
+            <Form
+              className={styles.SearchBar}
+              onSubmit={(event) => event.preventDefault()}
+            >
+              <Form.Control
+                size="sm"
+                type="text"
+                className="mr-sm-2"
+                placeholder="Search posts by title, profile, date or keywords"
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+              />
+              <Form.Control
+                size="sm"
+                // className="mr-sm-2"
+                as="select"
+                placeholder="Choose..."
+                value={category}
+                onChange={(event) => setCategory(event.target.value)}
+              >
+                <option key="blankChoice" hidden value>
+                  {" "}
+                  Category{" "}
+                </option>
+                <option value="tip">Tip</option>
+                <option value="help_needed">Help needed</option>
+                <option value="other">Other</option>
+              </Form.Control>
+            </Form>
+          </Container>
 
         {hasLoaded ? (
           <>

@@ -61,10 +61,11 @@ function App() {
             render={() => (
               <PostsPage
                 message="No results found. Adjust the search keyword or like a post."
-                filter={`likes__owner__profile=${profile_id}&adoptionlikes__owner__profile=${profile_id}&ordering=-likes__created_at&ordering=-adoptionlikes__created_at&`}
+                filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
               />
             )}
           />
+
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/posts/create" render={() => <PostCreateForm />} />
