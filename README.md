@@ -55,21 +55,22 @@ The objective of this project is to build a community-based rabbit content shari
 
 ## Site User's Goal
 
-There are primarily three types of users who will be interacting with this platform; rabbit owners, users interested in adopting and rabbit interested users who would like to gain info. 
+There are primarily three types of users who will be interacting with this platform; rabbit owners, users interested in adopting a rabbit and users who would like to gain info about rabbits.
 
 
 ## Site Owner's Goal
 
-As the site owner, I saw a need for a bunny comunity to share tips and info about rabbits. Since there are many rabbits who needs a new home due to different circumstances an important part of the site  should also provide an easy way to adopt a bunny.
+As the site owner, I saw a need for a bunny comunity to share tips and info about rabbits. Since there are many rabbits who needs a new home due to different circumstances an important part of the site  should also be to provide an easy way to adopt a bunny.
 
 ## Project Management
 
 ### Github Project Board
 
-I've been using the project board in GitHub to keep my project together. In the initial design phase, it was really helpful to plan the project as a whole, and create the user stories based on my wireframe designs. I created a Milestone for each main app created in the backend API plus one additional for Navigation and Authentication, in order to maintain a similar structure to the backend [Project Board](https://github.com/users/Karasp1980/projects/9/views/1). Each milestone has a list of bullet points for the main desired frontend features. Then, I created a linked User Story for each feature and gave it a level of prioritization using the MoSCoW method and a number of User Story points to indicate the level of difficulty for that feature.
+I've been using the project board in GitHub to keep my project together. 
 
-![User Stories](images/user-stories.jpg)
-![Project Board](images/project-board.jpg)
+[User Stories](https://github.com/Karasp1980/bunnyland/issues)
+[Project Board](https://github.com/users/Karasp1980/projects/9)
+
 
 ### Database Schema
 
@@ -105,13 +106,13 @@ The wireframes for the site were created using [Balsamiq](https://balsamiq.com).
 ## User Stories
 Here I have listed the main user stories for a user who is not logged in, or has no account and a logged in user. These user stories were then tested and confirmed in the [Testing](<#testing>) section.
 
-
+[User Stories](https://github.com/Karasp1980/bunnyland/issues)
 
 [Back to top](<#table-of-contents>)
 
 ## Site Structure
 
-Happening is split up in two parts: when the user is logged out and when the user is logged in. Depending on login status different pages are available for the user. When the user is logged out the pages: Home, and Sign In or Up are available from the Navigation Bar menu. When the user is logged in Feed, My Events, Reviews, Signout and Profile Page also become available. 
+Bunnyland is split up in two parts: when the user is logged out and when the user is logged in. Depending on login status different pages are available for the user. When the user is logged out the pages: Home, Adoption and Sign In or Up are available from the Navigation Bar menu. When the user is logged in Feed, Likes, Signout and Profile Page also become available. 
 
 ## Design Choices
 
@@ -225,13 +226,14 @@ The adoption posts are all the same as the posts with only a fiew differences;
 
  The user can search all the posts listed by post title, username who posted it, category, location or keyword in the content. The filter category could also be used for Posts (not adoption posts) to filter posts by category: Tip, Help needed, Other
 
-![Search filter](images/search.jpg)
+![Search filter Posts](images/search-posts.png)
+![Search filter Adoption posts](images/posts.png)
 
 * ## Feed
 
 The feed page looks identical to the homepage, only the Posts component changes. In this page all the posts are requested from the API, but then a filter is used to only show posts by profiles that the currently logged in user is following. For this reason, this page doesn't work if the user is not logged in. Equally, if the user isn't following any other profiles, no posts will be displayed and a 'No Results found' message will appear instead inside the events posts component. 
 
-![Feed- No Results](images/feed.jpg)
+![Feed- No Results](images/feed.png)
 
 
 * ## Create a Post
@@ -242,7 +244,7 @@ If you are logged in, you are able to share posts with the community. By clickin
 
 Each time you share a new post with the community, your posts count goes up on your profile page for other users to see how active you are on the site. 
 
-![Create Post](images/create-post.jpg)
+![Create Post](images/create-post.png)
 
 * ## Post Detail Page
 
@@ -250,21 +252,21 @@ In the post details page, this simply shows everything relating to one single po
 
 If you select Edit, you are taken back to the post creation form, but the fields are already pre-populated with the existing event information. You can edit the desired fields and save the changes, which will return you to the post detail page and you can see that the post has been updated successfully. 
 
-![Edit Post](images/edit-post.jpg)
+![Edit Post](images/edit-post.png)
 
 If you select Delete, the post will be removed from all pages and the user redirected back to the previously visited page. 
 
-![Delete Post](images/delete-post.jpg)
+![Delete Post](images/delete-post.png)
 
 Below the Posts details is the comments section. If there are no comments yet, the user will see a message telling them that there are no comments. 
 
 If the user is not logged in, they can read any comments that have been posted but they can't post a comment themselves unless they log in. 
 
-![Comments - not logged in](images/no-comments.jpg)
+![Comments - not logged in](images/no-comments.png)
 
 Any comments that have been posted about this post are displayed, regardless of login status. If the user logs in they will see a comment form above the existing comments where they can post their own comments about the post for other users to read. 
 
-![Comments](images/comments.jpg)
+![Comments](images/comments.png)
 
 * ## Create an Adoption post
 
@@ -273,7 +275,7 @@ If you are logged in, you are able to share Adoption posts with the community. B
  Once the form has been submitted successfully, you can see the post published successfully as you are re-directed automatically to the newly created event details page. 
 
 
-![Create Adoption post](images/create-adoptionpost.jpg)
+![Create Adoption post](images/create-adoptionpost.png)
 
 * ## Adoptinpost Detail Page
 
@@ -281,7 +283,7 @@ In the Adoptionpost details page, this simply shows everything relating to one s
 
 If you select Edit, you are taken back to the post creation form, but the fields are already pre-populated with the existing event information. You can edit the desired fields and save the changes, which will return you to the post detail page and you can see that the post has been updated successfully. 
 
-![Edit Adoptionpost](images/edit-adoptionpost.jpg)
+![Edit Adoptionpost](images/edit-adoptionpost.png)
 
 If you select Delete, the post will be removed from all pages and the user redirected back to the previously visited page just like on the Post Edit page.
 
@@ -305,17 +307,17 @@ When a user signs up and creates a new site account, a basic profile is automati
 * Number of profiles they are following
 * Number of profiles that are following them
 
-![Profile Page](images/profilepage.jpg)
+![Profile Page](images/profilepage.png)
 
 There is an about container and a contact details container which remain empty until the user goes into their own profile page and clicks on the three dots dropdown to Edit the profile and add their personal details to the page. If they click on the Edit Profile option, they are taken to a new page containing the full profile details form to fill in and submit. Here, they can add their own avatar image, a name, bio. These are designed mainly to give posts hosts the opportunity to publish additional information but of course all users are welcome to add as much or little personal info as they wish. 
 
-![Profile Edit](images/profile-edit.jpg)
+![Profile Edit](images/profile-edit.png)
 
 Once these fields have been filled in, they can be seen by other users in the main profile page stats container. 
 
 Each profile also has a follow button inside the stats container so that other users can click it to follow and unfollow the profile as all profiles won't always appear listed in the popular profiles component, to access the follow functionality there. 
 
-![Profile Stats](images/profile-follow.jpg)
+![Profile Stats](images/profile-follow.png)
 
 ### Profile Posts
 
@@ -327,20 +329,20 @@ At the top right side of the Profile page there is a messaging system component.
 
 If you are viewing someone else's profile, the message component contains a form to write a message and send it to the owner of the profile page you are viewing. 
 
-![Create Message](images/profile-send-message.jpg)
+![Create Message](images/profile-send-message.png)
 
 If you are viewing your own profile page the messaging component will display your own private message inbox. Other users will not be able to see the messages that have not been sent to them. All messages that have been sent to you, are displayed in descending order of when they were sent. You can see the avatar and the username of the sender, the date the message was sent, and the message itself. Each message has a 'reply' button if the user wants to send a reply message back to the sender. 
 
-![Received Messages](images/messages-list.jpg)
-![Messages - Reply](images/message-replyforms.jpg)
+![Received Messages](images/messages-list.png)
+![Messages - Reply](images/message-replyforms.png)
 
 Unlike with other forms such as creating an event, comment or review, where you can see the published content once the form has been posted successfully, the user does not have access to other user's inboxes to check whether the message has been sent successfully or not. For this reason, in the case of the messaging component, I have set up an alert system using Bootstrap alerts, to display a success alert message when a message or a reply message have been sent successfully. This adds to good user experience, and user peace of mind. 
 
-![Message Success message](images/message-success.jpg)
+![Message Success message](images/message-success.png)
 
 Equally, if the user tries to send a blank message, they will see a Bootstrap warning message telling them that they must fill in the message field in order to send the message successfully. 
 
-![Message Alert](images/message-blank)
+![Message Alert](images/message-blank.png)
 
 For the time being, there is no alert system in place to send a notification to a user when they receive a new message, but this is something I would like to look into in future development sprints.
 
@@ -359,11 +361,11 @@ If you are viewing someone else's profile, no Adoption request field is visable.
 
 Unlike with other forms such as creating a post, adoption post or comment, where you can see the published content once the form has been posted successfully, the user does not have access to other user's inboxes to check whether the adoption request has been sent successfully or not. For this reason, in the case of the messaging component, I have set up an alert system using Bootstrap alerts, to display a success alert message when a message or a reply message have been sent successfully. This adds to good user experience, and user peace of mind. 
 
-![Adoption request Success message](images/adoptionrequest-success.jpg)
+![Adoption request Success message](images/adoptionrequest-success.png)
 
 Equally, if the user tries to send a blank message, they will see a Bootstrap warning message telling them that they must fill in the fields in order to send the request successfully. 
 
-![Message Alert](images/adoptionrequest-alert)
+![Message Alert](images/adoptionrequest-alert.png)
 
 For the time being, there is no alert system in place to send a notification to a user when they receive a new adoption request, but this is something I would like to look into in future development sprints.
 
@@ -453,7 +455,7 @@ Once you have set up the workspace and done a basic deploy to Heroku, you can co
 
 
 # Acknowledgements
-This site was created for Portfolio Project #5 (Advanced Front End Specialisation) - Diploma in Full Stack Software Development at the [Code Institute](https://www.codeinstitute.net). I would like to give a huge thanks to my mentor Antonio Rodriques for all help during this project as well as during all five course projects.
+This site was created for Portfolio Project #5 (Advanced Frontend Specialisation) - Diploma in Full Stack Software Development at the [Code Institute](https://www.codeinstitute.net). I would like to give a huge thanks to my mentor Antonio Rodriques for all help during this project as well as during all five course projects.
 
 
 
@@ -484,6 +486,7 @@ This site was created for Portfolio Project #5 (Advanced Front End Specialisatio
 * [https://www.flaticon.com](https://www.flaticon.com)
 * [https://www.hepper.com](https://www.hepper.com/diy-rabbit-litter-box/)
 * [https://xn--svenskateddysllskapet-i2b.weebly.com/]( https://xn--svenskateddysllskapet-i2b.weebly.com/)
+* [https://teddysallskapet.weebly.com/rasstandard.html/]( https://teddysallskapet.weebly.com/rasstandard.html)
 
 
 
@@ -492,6 +495,7 @@ This site was created for Portfolio Project #5 (Advanced Front End Specialisatio
 * [Happening - API](https://github.com/quiltingcode/events-backend-api)
 * [Gear addict](https://github.com/Matthew-Hurrell/gear-addict)
 * [Gear addict - API](https://github.com/Matthew-Hurrell/gear-addict-api)
+* [Garden Diary - API](https://github.com/EmelieMarkkanen/p5-garden-diary-api)
 
 
 

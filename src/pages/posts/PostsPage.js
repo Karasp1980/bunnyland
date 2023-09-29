@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 import Post from "./Post";
+import Adoptionpost from "../adoptionposts/Adoptionpost";
 import Asset from "../../components/Asset";
 
 import appStyles from "../../App.module.css";
@@ -19,9 +20,11 @@ import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
-function PostsPage({ message, filter = "" }) {
+function PostsPage({ message, filter = "", filterAdoption = "" }) {
   const [posts, setPosts] = useState({ results: [] });
+  const [adoptionPosts, setAdoptionPosts]= useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [hasLoadedAdoption, setHasLoadedAdoption] = useState(false);
   const { pathname } = useLocation();
 
  
@@ -40,15 +43,27 @@ function PostsPage({ message, filter = "" }) {
       }
     };
 
+    const fetchAdoptionPosts = async () => {
+      try {
+        const { data } = await axiosReq.get(`/adoption/?${filterAdoption}search=${search}`);
+        setAdoptionPosts(data);
+        setHasLoadedAdoption(true);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
     setHasLoaded(false);
+    setHasLoadedAdoption(false);
     const timer = setTimeout(() => {
       fetchPosts();
+      fetchAdoptionPosts();
     }, 1000);
 
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, search, pathname, currentUser, category]);
+  }, [filter, filterAdoption, search, pathname, currentUser, category]);
 
   return (
     <Row className="h-100">
@@ -111,7 +126,31 @@ function PostsPage({ message, filter = "" }) {
             <Asset spinner />
           </Container>
         )}
+        {hasLoadedAdoption ? (
+          <>
+            {adoptionPosts.results.length ? (
+              <InfiniteScroll
+                children={adoptionPosts.results.map((post) => (
+                  <Adoptionpost key={post.id} {...post} setAdoptionposts={setAdoptionPosts} />
+                ))}
+                dataLength={adoptionPosts.results.length}
+                loader={<Asset spinner />}
+                hasMore={!!adoptionPosts.next}
+                next={() => fetchMoreData(adoptionPosts, setAdoptionPosts)}
+              />
+            ) : (
+              <Container className={appStyles.Content}>
+                <Asset src={NoResults} message={message} />
+              </Container>
+            )}
+          </>
+        ) : (
+          <Container className={appStyles.Content}>
+            <Asset spinner />
+          </Container>
+        )}
       </Col>
+      
       <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
         <PopularProfiles />
       </Col>
